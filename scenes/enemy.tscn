@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cv5r7nxxjb670"]
+
+[ext_resource type="Texture2D" uid="uid://qechktnpj1f1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0412_Capa-413.png" id="1_7p1mj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7p1mj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1152867235]
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
+sprite_frames = SubResource("SpriteFrames_md0e3")
+animation = &"idle"

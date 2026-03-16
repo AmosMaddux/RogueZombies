@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dg8ujyj2k82h0"]
+
+[ext_resource type="Texture2D" uid="uid://wb85l2xltqjb" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0338_Capa-339.png" id="1_ufhdc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syuqf"]
+size = Vector2(12, 4)
+
+[node name="knife" type="Area2D" unique_id=1909007110]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1663604020]
+rotation = 1.5707964
+texture = ExtResource("1_ufhdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1380193436]
+shape = SubResource("RectangleShape2D_syuqf")
