@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://e1kqrpwdlydh"]
+
+[ext_resource type="Texture2D" uid="uid://decjcj1mm28gj" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Knife Attack Animation Frames/Zombie-Tileset---_0375_Capa-376.png" id="1_a8t5k"]
+[ext_resource type="Script" uid="uid://c85mwkbea13m0" path="res://scripts/slash_fx.gd" id="1_effsu"]
+[ext_resource type="Texture2D" uid="uid://nbp4x58j7py6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Knife Attack Animation Frames/Zombie-Tileset---_0376_Capa-377.png" id="2_effsu"]
+[ext_resource type="Texture2D" uid="uid://c8rtwhxfig107" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Knife Attack Animation Frames/Zombie-Tileset---_0377_Capa-378.png" id="3_udt0w"]
+[ext_resource type="Texture2D" uid="uid://c6syd2pbtx03u" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Knife Attack Animation Frames/Zombie-Tileset---_0378_Capa-379.png" id="4_k0nmf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ualfx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a8t5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_effsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_udt0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k0nmf")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 10.0
+}]
+
+[node name="SlashFX" type="Node2D" unique_id=440091431]
+script = ExtResource("1_effsu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1040521441]
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_ualfx")
+animation = &"slash"
+frame_progress = 0.57021374

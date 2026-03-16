@@ -1,14 +1,33 @@
 extends CharacterBody2D
 
+#Children
 @onready var visuals: Node2D = $Visuals
 @onready var animated_sprite: AnimatedSprite2D = $Visuals/AnimatedSprite2D
+@onready var weapon_pivot: Node2D = $WeaponPivot
+@onready var weapon_slot: Marker2D = $WeaponPivot/WeaponSlot
+
+#Packed Scenes
+@export var fx_scene: PackedScene = res://scenes/slash_fx.tscn
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
-# Version Control Test
+var has_knife := false
+var knife_equipped := false
 
-func _physics_process(delta: float) -> void:
+func equip_knife():
+	if not has_knife:
+		has_knife = true
+	knife_equipped = true
+
+func rotate_weapon_pivot():
+	#Get mouse position relative to the player location
+	var mouse_pos = get_global_mouse_position()
+	
+	#Make the weapon pivot rotate towards the mouse
+	weapon_pivot.look_at(mouse_pos)
+	
+func move():
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down")
@@ -35,3 +54,18 @@ func _physics_process(delta: float) -> void:
 
 	
 	move_and_slide()
+	
+func attack():
+	if knife_equipped:
+		#Instantiate scene and add as child
+		var fx = fx_scene.instantiate()
+		weapon_slot.add_child(fx)
+		
+	
+		
+func _process(delta: float) -> void:
+	rotate_weapon_pivot()
+	
+
+func _physics_process(delta: float) -> void:
+	move()
