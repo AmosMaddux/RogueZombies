@@ -22,4 +22,4 @@ func equip_to_player(player: CharacterBody2D):
 	
 	# Set position and rotation local to weapon slot
 	position = Vector2.ZERO
-	rotation = 90
+	rotation = 0
