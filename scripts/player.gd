@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var weapon_slot: Marker2D = $WeaponPivot/WeaponSlot
 
 #Packed Scenes
-@export var fx_scene: PackedScene = res://scenes/slash_fx.tscn
+@export var fx_scene: PackedScene
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
@@ -65,6 +65,9 @@ func attack():
 		
 func _process(delta: float) -> void:
 	rotate_weapon_pivot()
+	
+	if Input.is_action_just_pressed("attack"):
+		attack()
 	
 
 func _physics_process(delta: float) -> void:

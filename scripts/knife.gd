@@ -1,4 +1,5 @@
 extends Area2D
+class_name Knife
 
 var is_equipped = false
 
