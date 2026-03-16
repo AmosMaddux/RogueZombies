@@ -56,7 +56,21 @@ func move():
 	move_and_slide()
 	
 func attack():
+	var current_weapon = weapon_slot.get_child(0) if weapon_pivot.get_child_count() > 0 else null
+	
 	if knife_equipped:
+		#Tween the knife so it looks like a slash
+		var tween = create_tween()
+		#Wind up
+		tween.tween_property(current_weapon, "rotation", deg_to_rad(-45), 0.05)
+		tween.parallel().tween_property(current_weapon, "position:y", -10.0, 0.05)
+		#Slash
+		tween.tween_property(current_weapon, "rotation", deg_to_rad(45), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		tween.parallel().tween_property(current_weapon, "position:y", 5.0, 0.1)
+		#Back to normal
+		tween.tween_property(current_weapon, "rotation", 0, 0.1)
+		tween.parallel().tween_property(current_weapon, "position:y", 0.0, 0.1)
+
 		#Instantiate scene and add as child
 		var fx = fx_scene.instantiate()
 		weapon_slot.add_child(fx)
