@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cd287x3ymxxpp" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0421_Capa-422.png" id="2_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://yxbbs0578xb7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0422_Capa-423.png" id="3_xwavj"]
 [ext_resource type="Texture2D" uid="uid://bmywu3fi48nq7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0423_Capa-424.png" id="4_nenq2"]
+[ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="5_8qclf"]
+[ext_resource type="Texture2D" uid="uid://bvmaucelt0k2t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0380_Capa-381.png" id="6_w8i8w"]
+[ext_resource type="Texture2D" uid="uid://b0jy4vtldvpj6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0381_Capa-382.png" id="7_otmr2"]
+[ext_resource type="Texture2D" uid="uid://cofak1boi3q06" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0382_Capa-383.png" id="8_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://bpbso3flny5mo" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0383_Capa-384.png" id="9_j0cyh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -27,6 +32,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_8qclf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w8i8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_otmr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wtq4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_j0cyh")
+}],
+"loop": true,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_7p1mj")
 }],
 "loop": true,
@@ -45,9 +70,9 @@ script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
 sprite_frames = SubResource("SpriteFrames_md0e3")
-animation = &"damage_idle"
-frame = 3
-frame_progress = 1.0
+animation = &"die"
+frame = 2
+frame_progress = 0.08498188
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
 shape = SubResource("RectangleShape2D_7p1mj")
