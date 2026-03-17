@@ -2,9 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://qechktnpj1f1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0412_Capa-413.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://d3hgiaolxjn12" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" uid="uid://cd287x3ymxxpp" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0421_Capa-422.png" id="2_c4w8v"]
+[ext_resource type="Texture2D" uid="uid://yxbbs0578xb7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0422_Capa-423.png" id="3_xwavj"]
+[ext_resource type="Texture2D" uid="uid://bmywu3fi48nq7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0423_Capa-424.png" id="4_nenq2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c4w8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nenq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c4w8v")
+}],
+"loop": false,
+"name": &"damage_idle",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_7p1mj")
@@ -17,10 +37,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
 size = Vector2(14, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
-size = Vector2(14, 14)
-
-[node name="Enemy" type="CharacterBody2D" unique_id=1152867235]
+[node name="Enemy" type="CharacterBody2D" unique_id=1152867235 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_md0e3")
 
@@ -28,14 +45,9 @@ script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
 sprite_frames = SubResource("SpriteFrames_md0e3")
-animation = &"idle"
+animation = &"damage_idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
 shape = SubResource("RectangleShape2D_7p1mj")
-
-[node name="hitbox" type="Area2D" parent="." unique_id=753342592]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1018137824]
-shape = SubResource("RectangleShape2D_md0e3")
-
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

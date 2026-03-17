@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bv6y3y31u437b" path="res://scripts/knife.gd" id="1_syuqf"]
 [ext_resource type="Texture2D" uid="uid://wb85l2xltqjb" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0338_Capa-339.png" id="1_ufhdc"]
+[ext_resource type="PackedScene" uid="uid://e1kqrpwdlydh" path="res://scenes/slash_fx.tscn" id="2_amocf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syuqf"]
 size = Vector2(12, 4)
@@ -11,6 +12,7 @@ size = Vector2(7, 4)
 
 [node name="knife" type="Area2D" unique_id=1909007110]
 script = ExtResource("1_syuqf")
+fx_scene = ExtResource("2_amocf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1663604020]
 rotation = 1.5707964
@@ -20,9 +22,12 @@ texture = ExtResource("1_ufhdc")
 shape = SubResource("RectangleShape2D_syuqf")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1017399593]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1911077926]
 position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_amocf")
+disabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
