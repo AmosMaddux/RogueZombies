@@ -8,6 +8,10 @@ var health = 100
 
 #Child Nodes
 @onready var animated_sprite_2d: AnimatedSprite2D = $Visuals/AnimatedSprite2D
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+
+#Other Nodes
+@onready var player: Player = %Player
 
 func animate_damage():
 	animated_sprite_2d.play("damage_idle")
@@ -27,7 +31,9 @@ func take_damage(damage_amount: int):
 	animate_damage()
 	
 
+func _process(delta: float) -> void:
+	nav_agent.target_position = player.global_position
+	nav_agent.get_next_path_position()
 	
-
 func _physics_process(delta: float) -> void:
-	pass
+	move_and_slide()

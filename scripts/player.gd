@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 #Children
 @onready var visuals: Node2D = $Visuals
 @onready var animated_sprite: AnimatedSprite2D = $Visuals/AnimatedSprite2D
