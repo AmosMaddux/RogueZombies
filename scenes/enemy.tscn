@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cv5r7nxxjb670"]
 
 [ext_resource type="Texture2D" uid="uid://qechktnpj1f1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0412_Capa-413.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://d3hgiaolxjn12" path="res://scripts/enemy.gd" id="1_md0e3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -13,10 +14,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
+size = Vector2(14, 14)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1152867235]
+script = ExtResource("1_md0e3")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
+shape = SubResource("RectangleShape2D_7p1mj")

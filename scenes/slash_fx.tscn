@@ -26,6 +26,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_effsu"]
+size = Vector2(6, 18)
+
 [node name="SlashFX" type="Node2D" unique_id=440091431]
 script = ExtResource("1_effsu")
 
@@ -33,4 +36,11 @@ script = ExtResource("1_effsu")
 rotation = -1.5707964
 sprite_frames = SubResource("SpriteFrames_ualfx")
 animation = &"slash"
-frame_progress = 0.57021374
+frame = 3
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=934791627]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2145953414]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_effsu")
