@@ -11,6 +11,9 @@ var health = 100
 
 func animate_damage():
 	animated_sprite_2d.play("damage_idle")
+	await animated_sprite_2d.animation_finished
+	if health <= 0:
+		die()
 	
 func die():
 	animated_sprite_2d.play("die")
@@ -18,12 +21,12 @@ func die():
 	queue_free()
 	
 func take_damage(damage_amount: int):
-	print("Ow! " + self.name + " has taken " + str(damage_amount) + " damage! Current health: " + str(health))
 	health -= damage_amount
+	print("Ow! " + self.name + " has taken " + str(damage_amount) + " damage! Current health: " + str(health))
+
 	animate_damage()
 	
-	if health >= 0:
-		die()
+
 	
 
 func _physics_process(delta: float) -> void:

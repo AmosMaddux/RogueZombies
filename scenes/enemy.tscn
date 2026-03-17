@@ -46,7 +46,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_j0cyh")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 10.0
 }, {
@@ -70,9 +70,7 @@ script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
 sprite_frames = SubResource("SpriteFrames_md0e3")
-animation = &"die"
-frame = 2
-frame_progress = 0.08498188
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
 shape = SubResource("RectangleShape2D_7p1mj")
