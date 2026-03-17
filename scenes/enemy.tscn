@@ -17,7 +17,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
 size = Vector2(14, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(14, 14)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1152867235]
+collision_layer = 2
 script = ExtResource("1_md0e3")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
@@ -28,3 +32,10 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
 shape = SubResource("RectangleShape2D_7p1mj")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=753342592]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1018137824]
+shape = SubResource("RectangleShape2D_md0e3")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

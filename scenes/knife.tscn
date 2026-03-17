@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syuqf"]
 size = Vector2(12, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amocf"]
+size = Vector2(7, 4)
+
 [node name="knife" type="Area2D" unique_id=1909007110]
 script = ExtResource("1_syuqf")
 
@@ -15,5 +18,12 @@ texture = ExtResource("1_ufhdc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1380193436]
 shape = SubResource("RectangleShape2D_syuqf")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1017399593]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1911077926]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_amocf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
