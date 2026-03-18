@@ -10,6 +10,7 @@ class_name Player
 
 #Health Vars
 var health := 100
+var is_alive := true
 
 #Movement Vars
 const SPEED = 150.0
@@ -22,6 +23,21 @@ var knife_equipped := false
 func take_damage(damage_amount: int):
 	health -= damage_amount
 	print("Player has taken damage! Health: " + str(health))
+	
+	#Flash red
+	var tween = create_tween()
+	tween.tween_property(animated_sprite, "self_modulate", Color.RED, 0.1)
+	tween.tween_property(animated_sprite, "self_modulate", Color.WHITE, 0.1)
+
+	if health <= 0:
+		is_alive = false
+		die()
+		
+func die():
+	Engine.time_scale = 0.5
+	animated_sprite.play("die")
+	await animated_sprite.animation_finished
+	queue_free()
 	
 func equip_knife():
 	if not has_knife:
@@ -76,11 +92,13 @@ func attack():
 	
 		
 func _process(delta: float) -> void:
-	rotate_weapon_pivot()
+	if is_alive:
+		rotate_weapon_pivot()
 	
-	if Input.is_action_just_pressed("attack"):
-		attack()
+		if Input.is_action_just_pressed("attack"):
+			attack()
 	
 
 func _physics_process(delta: float) -> void:
-	move()
+	if is_alive:
+		move()
