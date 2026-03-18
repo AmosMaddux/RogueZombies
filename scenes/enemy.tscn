@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://qechktnpj1f1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0412_Capa-413.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://d3hgiaolxjn12" path="res://scripts/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://cd287x3ymxxpp" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0421_Capa-422.png" id="2_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://yxbbs0578xb7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0422_Capa-423.png" id="3_xwavj"]
 [ext_resource type="Texture2D" uid="uid://bmywu3fi48nq7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Big Zombie Animation Frames/Zombie-Tileset---_0423_Capa-424.png" id="4_nenq2"]
 [ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="5_8qclf"]
@@ -10,12 +9,23 @@
 [ext_resource type="Texture2D" uid="uid://b0jy4vtldvpj6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0381_Capa-382.png" id="7_otmr2"]
 [ext_resource type="Texture2D" uid="uid://cofak1boi3q06" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0382_Capa-383.png" id="8_wtq4b"]
 [ext_resource type="Texture2D" uid="uid://bpbso3flny5mo" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0383_Capa-384.png" id="9_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://bckl21w4q38bu" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0415_Capa-416.png" id="10_otmr2"]
+[ext_resource type="Texture2D" uid="uid://bwujdpthayskc" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0413_Capa-414.png" id="10_shcg2"]
+[ext_resource type="Texture2D" uid="uid://c8dbi7s78wu2l" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0414_Capa-415.png" id="11_ile5s"]
+[ext_resource type="Texture2D" uid="uid://3myhqd0x50r8" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0416_Capa-417.png" id="11_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://c3pvbnlukypst" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0417_Capa-418.png" id="12_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://41pgqmkuybna" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0418_Capa-419.png" id="15_1x4g4"]
+[ext_resource type="Texture2D" uid="uid://d24u3a3xlwstw" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0419_Capa-420.png" id="16_2pwtc"]
+[ext_resource type="Texture2D" uid="uid://duuchtv5o15ph" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Big Zombie Walking Animation Frames/Zombie-Tileset---_0420_Capa-421.png" id="17_rogs8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_c4w8v")
+"texture": ExtResource("3_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nenq2")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_xwavj")
@@ -24,7 +34,10 @@ animations = [{
 "texture": ExtResource("4_nenq2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_c4w8v")
+"texture": ExtResource("3_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nenq2")
 }],
 "loop": false,
 "name": &"damage_idle",
@@ -57,6 +70,57 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7p1mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_shcg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7p1mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ile5s")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_otmr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wtq4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_otmr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_j0cyh")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_1x4g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2pwtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1x4g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rogs8")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
@@ -65,14 +129,17 @@ size = Vector2(14, 14)
 [node name="Enemy" type="CharacterBody2D" unique_id=1152867235 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_md0e3")
+min_attack_distance = 20
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_md0e3")
-animation = &"idle"
+animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_7p1mj")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=402544949]

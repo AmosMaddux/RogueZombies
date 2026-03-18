@@ -5,6 +5,7 @@ class_name Knife
 var targets_hit = []
 var is_equipped = false
 @export var damage_amount := 50
+var is_attacking = false
 
 #Child Nodes
 @onready var hitbox: CollisionShape2D = $hitbox/CollisionShape2D
@@ -14,26 +15,32 @@ var is_equipped = false
 @export var fx_scene: PackedScene
 
 func attack(origin: Marker2D):
-		#Clear targets hit
-		targets_hit.clear()
-		#Enable hitbox of knife
-		hitbox.set_deferred("disabled", false)
-		#Tween the knife so it looks like a slash
-		var tween = create_tween()
-		#Wind up
-		tween.tween_property(self, "rotation", deg_to_rad(-45), 0.05)
-		tween.parallel().tween_property(self, "position:y", -10.0, 0.05)
-		#Slash
-		tween.tween_property(self, "rotation", deg_to_rad(45), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-		tween.parallel().tween_property(self, "position:y", 5.0, 0.1)
-		#Back to normal
-		tween.tween_property(self, "rotation", 0, 0.1)
-		tween.parallel().tween_property(self, "position:y", 0.0, 0.1)
-		#Disable hitbox again
-		tween.tween_callback(func(): hitbox.set_deferred("disabled", true))
-		#Instantiate scene and add as child
-		var fx = fx_scene.instantiate()
-		origin.add_child(fx)
+		if not is_attacking:
+			is_attacking = true
+			#Clear targets hit
+			targets_hit.clear()
+			#Enable hitbox of knife
+			hitbox.set_deferred("disabled", false)
+			#Tween the knife so it looks like a slash
+			var tween = create_tween()
+			#Wind up
+			tween.tween_property(self, "rotation", deg_to_rad(-45), 0.05)
+			tween.parallel().tween_property(self, "position:y", -10.0, 0.05)
+			#Slash
+			tween.tween_property(self, "rotation", deg_to_rad(45), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+			tween.parallel().tween_property(self, "position:y", 5.0, 0.1)
+			#Back to normal
+			tween.tween_property(self, "rotation", 0, 0.1)
+			tween.parallel().tween_property(self, "position:y", 0.0, 0.1)
+			#Disable hitbox again
+			tween.tween_callback(func(): hitbox.set_deferred("disabled", true))
+			#Instantiate scene and add as child
+			var fx = fx_scene.instantiate()
+			origin.add_child(fx)
+			
+			#Timeout, then reset is_attacking
+			tween.tween_interval(0.1)
+			tween.tween_callback(func(): is_attacking = false)
 		
 func _on_body_entered(body: Node2D) -> void:
 	print("Triggered!")

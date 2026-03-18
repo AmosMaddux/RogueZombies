@@ -8,14 +8,21 @@ class_name Player
 @onready var weapon_pivot: Node2D = $WeaponPivot
 @onready var weapon_slot: Marker2D = $WeaponPivot/WeaponSlot
 
+#Health Vars
+var health := 100
 
-
+#Movement Vars
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
+#Weapon Vars
 var has_knife := false
 var knife_equipped := false
 
+func take_damage(damage_amount: int):
+	health -= damage_amount
+	print("Player has taken damage! Health: " + str(health))
+	
 func equip_knife():
 	if not has_knife:
 		has_knife = true
@@ -27,6 +34,9 @@ func rotate_weapon_pivot():
 	
 	#Make the weapon pivot rotate towards the mouse
 	weapon_pivot.look_at(mouse_pos)
+	
+	#Flip weapon based on side
+	weapon_pivot.scale.y = 1 if mouse_pos.x > position.x else -1
 	
 func move():
 	# Get the input direction and handle the movement/deceleration.

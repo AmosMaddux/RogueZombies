@@ -92,10 +92,12 @@ script = ExtResource("1_y4r1p")
 [node name="Visuals" type="Node2D" parent="." unique_id=1407934232]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1614711291]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_fulsm")
 animation = &"walk_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1450997048]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_4r5pv")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=898060502]
@@ -103,6 +105,7 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="WeaponPivot" type="Node2D" parent="." unique_id=1337569682]
+position = Vector2(0, -8)
 
 [node name="WeaponSlot" type="Marker2D" parent="WeaponPivot" unique_id=1728018417]
 position = Vector2(13, 0)
