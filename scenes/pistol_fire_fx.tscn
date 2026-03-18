@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cox4xbaoj0qu3"]
+
+[ext_resource type="Script" uid="uid://cxdw8krs52q2u" path="res://scripts/pistol_fire_fx.gd" id="1_0tfkm"]
+[ext_resource type="Texture2D" uid="uid://bcivnqjvblfjk" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pistol Shooting Animation Frames/Zombie-Tileset---_0370_Capa-371.png" id="1_xil6k"]
+[ext_resource type="Texture2D" uid="uid://lefc7fgms1eh" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pistol Shooting Animation Frames/Zombie-Tileset---_0371_Capa-372.png" id="2_0tfkm"]
+[ext_resource type="Texture2D" uid="uid://cjtsrgfm1lkba" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pistol Shooting Animation Frames/Zombie-Tileset---_0372_Capa-373.png" id="3_wdsu1"]
+[ext_resource type="Texture2D" uid="uid://d0qersf3t0nur" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pistol Shooting Animation Frames/Zombie-Tileset---_0373_Capa-374.png" id="4_xm65x"]
+[ext_resource type="Texture2D" uid="uid://jx7f00u0futy" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pistol Shooting Animation Frames/Zombie-Tileset---_0374_Capa-375.png" id="5_e3h75"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g5edm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xil6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0tfkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wdsu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xm65x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e3h75")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="PistolFireFX" type="Node2D" unique_id=176550839]
+script = ExtResource("1_0tfkm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=999191158]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_g5edm")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0

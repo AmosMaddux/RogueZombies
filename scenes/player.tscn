@@ -150,6 +150,7 @@ animations = [{
 size = Vector2(10, 12)
 
 [node name="Player" type="CharacterBody2D" unique_id=768004286 groups=["player"]]
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_y4r1p")
 

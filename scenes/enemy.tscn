@@ -127,6 +127,7 @@ animations = [{
 size = Vector2(14, 14)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1152867235 groups=["enemy"]]
+y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_md0e3")
 min_attack_distance = 20

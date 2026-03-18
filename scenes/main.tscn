@@ -4,17 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://bj0ykvpfbgkm7" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dg8ujyj2k82h0" path="res://scenes/knife.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cv5r7nxxjb670" path="res://scenes/enemy.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://kt1cf4t4y4qx" path="res://scenes/pistol.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node2D" unique_id=112989706]
 
 [node name="Terrain" parent="." unique_id=1159906809 instance=ExtResource("1_0wfyh")]
 
+[node name="Enemy" parent="Terrain" unique_id=1152867235 instance=ExtResource("4_jyhfs")]
+position = Vector2(215, 63)
+
 [node name="Player" parent="Terrain" unique_id=768004286 instance=ExtResource("2_sugp2")]
 unique_name_in_owner = true
 position = Vector2(149, 136)
 
-[node name="Enemy" parent="Terrain" unique_id=1152867235 instance=ExtResource("4_jyhfs")]
-position = Vector2(215, 63)
-
 [node name="knife" parent="Terrain" unique_id=1909007110 instance=ExtResource("3_sugp2")]
 position = Vector2(223, 115)
+
+[node name="Pistol" parent="Terrain" unique_id=143596898 instance=ExtResource("5_tbgi4")]
+position = Vector2(102, 164)

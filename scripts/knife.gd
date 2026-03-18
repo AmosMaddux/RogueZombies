@@ -43,7 +43,7 @@ func attack(origin: Marker2D):
 			tween.tween_callback(func(): is_attacking = false)
 		
 func _on_body_entered(body: Node2D) -> void:
-	print("Triggered!")
+	print("Knife triggered!")
 	if body.is_in_group("player") and not is_equipped:
 		print("Player entered")
 		equip_to_player(body)

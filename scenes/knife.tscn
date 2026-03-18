@@ -15,6 +15,7 @@ script = ExtResource("1_syuqf")
 fx_scene = ExtResource("2_amocf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1663604020]
+z_index = 5
 rotation = 1.5707964
 texture = ExtResource("1_ufhdc")
 

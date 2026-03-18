@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dindvgje25rg7"]
+
+[ext_resource type="Texture2D" uid="uid://sxwd5id0i783" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0342_Capa-343.png" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://dke5rpgeavuk7" path="res://scripts/bullet.gd" id="1_y25gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
+size = Vector2(4, 2)
+
+[node name="Bullet" type="Area2D" unique_id=1437581651]
+script = ExtResource("1_y25gk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2145207094]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_mkf8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=521078217]
+shape = SubResource("RectangleShape2D_y25gk")

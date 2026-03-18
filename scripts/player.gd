@@ -19,6 +19,8 @@ const JUMP_VELOCITY = -400.0
 #Weapon Vars
 var has_knife := false
 var knife_equipped := false
+var has_pistol := false
+var pistol_equipped := false
 
 func take_damage(damage_amount: int):
 	health -= damage_amount
@@ -43,6 +45,11 @@ func equip_knife():
 	if not has_knife:
 		has_knife = true
 	knife_equipped = true
+	
+func equip_pistol():
+	if not has_pistol:
+		has_pistol = true
+	pistol_equipped = true
 
 func rotate_weapon_pivot():
 	#Get mouse position relative to the player location
@@ -83,10 +90,9 @@ func move():
 	move_and_slide()
 	
 func attack():
+	#Call the weapon's attack function
 	var current_weapon = weapon_slot.get_child(0) if weapon_pivot.get_child_count() > 0 else null
-	
-	#TODO: I may not need this if statement after all
-	if current_weapon is Knife:
+	if current_weapon != null:
 		current_weapon.attack(weapon_slot)
 		
 	
