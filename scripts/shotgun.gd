@@ -64,7 +64,7 @@ func reload():
 		
 func equip_to_player(player: CharacterBody2D):
 	is_equipped = true
-	player.equip_shotgun()
+	player.collect_weapon("Shotgun")
 	
 	#Disable collision so it doesn't collide while holding
 	$CollisionShape2D.set_deferred("disabled", true)

@@ -50,7 +50,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 func equip_to_player(player: CharacterBody2D):
 	is_equipped = true
-	player.equip_knife()
+	player.collect_weapon(self)
 	
 	#Disable collision so it doesn't collide while holding
 	$CollisionShape2D.set_deferred("disabled", true)
