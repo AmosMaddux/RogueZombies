@@ -21,6 +21,8 @@ var has_knife := false
 var knife_equipped := false
 var has_pistol := false
 var pistol_equipped := false
+var has_shotgun := false
+var shotgun_equipped := false
 
 func take_damage(damage_amount: int):
 	health -= damage_amount
@@ -31,9 +33,13 @@ func take_damage(damage_amount: int):
 	tween.tween_property(animated_sprite, "self_modulate", Color.RED, 0.1)
 	tween.tween_property(animated_sprite, "self_modulate", Color.WHITE, 0.1)
 
+	
 	if health <= 0:
+		GameEvents.player_health_changed.emit(0)
 		is_alive = false
 		die()
+	else:
+		GameEvents.player_health_changed.emit(health)
 		
 func die():
 	Engine.time_scale = 0.5
@@ -50,6 +56,11 @@ func equip_pistol():
 	if not has_pistol:
 		has_pistol = true
 	pistol_equipped = true
+	
+func equip_shotgun():
+	if not has_shotgun:
+		has_shotgun = true
+	shotgun_equipped = true
 
 func rotate_weapon_pivot():
 	#Get mouse position relative to the player location
@@ -95,7 +106,16 @@ func attack():
 	if current_weapon != null:
 		current_weapon.attack(weapon_slot)
 		
-	
+func reload_weapon():
+	#If weapon is not knife
+	var current_weapon = weapon_slot.get_child(0) if weapon_pivot.get_child_count() > 0 else null
+	if current_weapon != null and current_weapon is not Knife:
+		current_weapon.reload()
+
+func _ready() -> void:
+	#Initialize UI
+	await get_tree().process_frame
+	GameEvents.player_health_changed.emit(health)
 		
 func _process(delta: float) -> void:
 	if is_alive:
@@ -103,6 +123,9 @@ func _process(delta: float) -> void:
 	
 		if Input.is_action_just_pressed("attack"):
 			attack()
+			
+		if Input.is_action_just_pressed("reload"):
+			reload_weapon()
 	
 
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cnbh7p1fg7kev"]
+
+[ext_resource type="Script" uid="uid://drdh5ipb4j68n" path="res://scripts/shotgun.gd" id="1_gnj2g"]
+[ext_resource type="Texture2D" uid="uid://cq18m13q8uqr1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0331_Capa-332.png" id="1_voyse"]
+[ext_resource type="PackedScene" uid="uid://dindvgje25rg7" path="res://scenes/bullet.tscn" id="2_1ya1i"]
+[ext_resource type="PackedScene" uid="uid://ccdnchj4tnrmy" path="res://scenes/shotgun_fire_fx.tscn" id="3_w47vr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnj2g"]
+size = Vector2(16, 6)
+
+[node name="shotgun" type="Area2D" unique_id=2017451274]
+script = ExtResource("1_gnj2g")
+bullet_scene = ExtResource("2_1ya1i")
+fire_fx = ExtResource("3_w47vr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=618346551]
+texture = ExtResource("1_voyse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793069206]
+shape = SubResource("RectangleShape2D_gnj2g")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=994738507]
+position = Vector2(8, -1)
+
+[node name="Timer" type="Timer" parent="." unique_id=2143034378]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

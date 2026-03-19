@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://m1uii5wbwtp"]
+
+[ext_resource type="Script" uid="uid://y0kg44o8r5av" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1773076948]
+script = ExtResource("1_ahhtf")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1044027092]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=757192503]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Control" unique_id=1643982682]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="AmmoText" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=163739552]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 58.0
+grow_vertical = 0
+text = "Ammo"
+label_settings = SubResource("LabelSettings_toqtt")
+
+[node name="AmmoNum" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=195365579]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = -33.0
+offset_right = 121.0
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_toqtt")
+
+[node name="HealthText" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=1664805580]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+offset_right = 58.0
+offset_bottom = -33.0
+grow_vertical = 0
+text = "Health"
+label_settings = SubResource("LabelSettings_toqtt")
+
+[node name="HealthNum" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=1476605264]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -66.0
+offset_right = 122.0
+offset_bottom = -33.0
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_toqtt")

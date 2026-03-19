@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dg8ujyj2k82h0" path="res://scenes/knife.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cv5r7nxxjb670" path="res://scenes/enemy.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://kt1cf4t4y4qx" path="res://scenes/pistol.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cnbh7p1fg7kev" path="res://scenes/shotgun.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://m1uii5wbwtp" path="res://scenes/hud.tscn" id="6_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=112989706]
 
@@ -22,3 +24,8 @@ position = Vector2(223, 115)
 
 [node name="Pistol" parent="Terrain" unique_id=143596898 instance=ExtResource("5_tbgi4")]
 position = Vector2(102, 164)
+
+[node name="shotgun" parent="Terrain" unique_id=2017451274 instance=ExtResource("6_o6xl0")]
+position = Vector2(78, 108)
+
+[node name="HUD" parent="." unique_id=1773076948 instance=ExtResource("6_tefeu")]
