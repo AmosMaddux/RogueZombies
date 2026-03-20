@@ -3,7 +3,6 @@ class_name Knife
 
 #Vars
 var targets_hit = []
-var is_equipped = false
 @export var damage_amount := 50
 var is_attacking = false
 
@@ -41,20 +40,9 @@ func attack(origin: Marker2D):
 			#Timeout, then reset is_attacking
 			tween.tween_interval(0.1)
 			tween.tween_callback(func(): is_attacking = false)
-		
-func _on_body_entered(body: Node2D) -> void:
-	print("Knife triggered!")
-	if body.is_in_group("player") and not is_equipped:
-		print("Player entered")
-		equip_to_player(body)
+
 		
 func equip_to_player(player: CharacterBody2D):
-	is_equipped = true
-	player.collect_weapon(self)
-	
-	#Disable collision so it doesn't collide while holding
-	$CollisionShape2D.set_deferred("disabled", true)
-	
 	#Add knife to weapon slot in player and remove from main scene
 	var slot = player.get_node("WeaponPivot/WeaponSlot")
 	get_parent().remove_child(self)

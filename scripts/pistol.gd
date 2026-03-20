@@ -2,7 +2,6 @@ extends Area2D
 class_name Pistol
 
 #Vars
-var is_equipped = false
 var is_attacking = false
 @export var attack_timeout := 0.1
 @export var max_ammo := 8
@@ -48,20 +47,9 @@ func attack(origin: Marker2D):
 func reload():
 	current_ammo = max_ammo
 	GameEvents.player_ammo_changed.emit(current_ammo)
-		
-func _on_body_entered(body: Node2D) -> void:
-	print("Pistol riggered!")
-	if body.is_in_group("player") and not is_equipped:
-		print("Player entered")
-		equip_to_player(body)
+
 		
 func equip_to_player(player: CharacterBody2D):
-	is_equipped = true
-	player.collect_weapon(self)
-	
-	#Disable collision so it doesn't collide while holding
-	$CollisionShape2D.set_deferred("disabled", true)
-	
 	#Add knife to weapon slot in player and remove from main scene
 	var slot = player.get_node("WeaponPivot/WeaponSlot")
 	get_parent().remove_child(self)

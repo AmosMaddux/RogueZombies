@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d3s5rlr588dau"]
+
+[ext_resource type="Script" uid="uid://cx1uka8mabcr0" path="res://scripts/weapon_pickup.gd" id="1_aoepw"]
+[ext_resource type="Texture2D" uid="uid://cq18m13q8uqr1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0331_Capa-332.png" id="2_bt436"]
+[ext_resource type="Texture2D" uid="uid://bj4hsbf1x7qid" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0334_Capa-335.png" id="3_setew"]
+[ext_resource type="Texture2D" uid="uid://cc6l1ck3ximc7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0337_Capa-338.png" id="4_nyn51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jld4d"]
+size = Vector2(20, 9)
+
+[node name="WeaponPickup" type="Area2D" unique_id=1100691937]
+script = ExtResource("1_aoepw")
+
+[node name="ShotgunSprite" type="Sprite2D" parent="." unique_id=553470832]
+visible = false
+texture = ExtResource("2_bt436")
+
+[node name="PistolSprite" type="Sprite2D" parent="." unique_id=276694343]
+visible = false
+texture = ExtResource("3_setew")
+
+[node name="KnifeSprite" type="Sprite2D" parent="." unique_id=1700757789]
+visible = false
+texture = ExtResource("4_nyn51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1558494854]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_jld4d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

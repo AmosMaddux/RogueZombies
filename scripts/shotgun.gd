@@ -2,7 +2,6 @@ extends Area2D
 class_name Shotgun
 
 #Vars
-var is_equipped = false
 var is_attacking = false
 @export var attack_timeout := 0.5
 @export var max_ammo := 2
@@ -20,12 +19,6 @@ var current_ammo := 0
 func _ready() -> void:
 	current_ammo = max_ammo
 	
-func _on_body_entered(body: Node2D) -> void:
-	print("Shotgun triggered!")
-	if body.is_in_group("player") and not is_equipped:
-		print("Player entered")
-		equip_to_player(body)
-
 
 func attack(origin: Marker2D):
 	if cooldown.is_stopped() and current_ammo > 0:
@@ -62,14 +55,8 @@ func reload():
 		
 
 		
-func equip_to_player(player: CharacterBody2D):
-	is_equipped = true
-	player.collect_weapon("Shotgun")
-	
-	#Disable collision so it doesn't collide while holding
-	$CollisionShape2D.set_deferred("disabled", true)
-	
-	#Add knife to weapon slot in player and remove from main scene
+func equip_to_player(player: CharacterBody2D):	
+	#Add shotgun to weapon slot in player and remove from main scene
 	var slot = player.get_node("WeaponPivot/WeaponSlot")
 	get_parent().remove_child(self)
 	slot.add_child(self)

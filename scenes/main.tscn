@@ -2,11 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bgg0mdoo0bucx" path="res://scenes/terrain.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bj0ykvpfbgkm7" path="res://scenes/player.tscn" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://dg8ujyj2k82h0" path="res://scenes/knife.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cv5r7nxxjb670" path="res://scenes/enemy.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://kt1cf4t4y4qx" path="res://scenes/pistol.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://cnbh7p1fg7kev" path="res://scenes/shotgun.tscn" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://m1uii5wbwtp" path="res://scenes/hud.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://d3s5rlr588dau" path="res://scenes/weapon_pickup.tscn" id="7_tipki"]
 
 [node name="Main" type="Node2D" unique_id=112989706]
 
@@ -19,13 +17,16 @@ position = Vector2(215, 63)
 unique_name_in_owner = true
 position = Vector2(149, 136)
 
-[node name="knife" parent="Terrain" unique_id=1909007110 instance=ExtResource("3_sugp2")]
-position = Vector2(223, 115)
+[node name="WeaponPickup" parent="Terrain" unique_id=1100691937 instance=ExtResource("7_tipki")]
+position = Vector2(196, 177)
+is_pistol = true
 
-[node name="Pistol" parent="Terrain" unique_id=143596898 instance=ExtResource("5_tbgi4")]
-position = Vector2(102, 164)
+[node name="WeaponPickup2" parent="Terrain" unique_id=919033611 instance=ExtResource("7_tipki")]
+position = Vector2(76, 173)
+is_knife = true
 
-[node name="shotgun" parent="Terrain" unique_id=2017451274 instance=ExtResource("6_o6xl0")]
-position = Vector2(78, 108)
+[node name="WeaponPickup3" parent="Terrain" unique_id=35493233 instance=ExtResource("7_tipki")]
+position = Vector2(313, 178)
+is_shotgun = true
 
 [node name="HUD" parent="." unique_id=1773076948 instance=ExtResource("6_tefeu")]

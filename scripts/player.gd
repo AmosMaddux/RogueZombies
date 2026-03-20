@@ -30,7 +30,8 @@ var has_shotgun := false
 var shotgun_equipped := false
 
 @export var shotgun_scene: PackedScene
-
+@export var pistol_scene: PackedScene
+@export var knife_scene: PackedScene
 
 func take_damage(damage_amount: int):
 	health -= damage_amount
@@ -69,6 +70,13 @@ func collect_weapon(name):
 	#Add weapon to list
 	if name == "Shotgun":
 		held_weapons.append(shotgun_scene)
+	elif name == "Pistol":
+		held_weapons.append(pistol_scene)
+	elif name == "Knife":
+		held_weapons.append(knife_scene)
+	else:
+		print("Weapon name not valid. Cannot equip!")
+		
 	
 	#Automatically Equip
 	current_weapon_index = held_weapons.size() - 1
@@ -82,6 +90,9 @@ func cycle_weapon(direction: int):
 	#Must reset if wraps around backwards
 	if current_weapon_index < 0:
 		current_weapon_index = held_weapons.size() - 1
+	
+	print("Current_weapon_index: {current_weapon_index}")
+	print("Weapon at index: {held_weapons[current_weapon_index]}")
 		
 	equip_weapon(current_weapon_index)
 		
@@ -135,7 +146,7 @@ func move():
 func attack():
 	if Input.is_action_just_pressed("attack"):
 		#Call the weapon's attack function
-		var current_weapon = weapon_slot.get_child(0) if weapon_pivot.get_child_count() > 0 else null
+		var current_weapon = weapon_slot.get_child(0) if weapon_slot.get_child_count() > 0 else null
 		if current_weapon != null:
 			current_weapon.attack(weapon_slot)
 		
