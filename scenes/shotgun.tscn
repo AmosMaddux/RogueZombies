@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnj2g"]
 size = Vector2(16, 6)
 
-[node name="shotgun" type="Area2D" unique_id=2017451274]
+[node name="Shotgun" type="Area2D" unique_id=2017451274]
 script = ExtResource("1_gnj2g")
 bullet_scene = ExtResource("2_1ya1i")
 fire_fx = ExtResource("3_w47vr")

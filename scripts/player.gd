@@ -22,10 +22,13 @@ var is_weapon_equipped := false
 var current_weapon_index := 0
 var current_weapon: Area2D = null
 
+var knife_name := "Knife"
 var has_knife := false
 var knife_equipped := false
+var pistol_name := "Pistol"
 var has_pistol := false
 var pistol_equipped := false
+var shotgun_name := "Shotgun"
 var has_shotgun := false
 var shotgun_equipped := false
 
@@ -65,14 +68,15 @@ func equip_weapon(index: int):
 	var new_weapon = held_weapons[index].instantiate()
 	weapon_slot.add_child(new_weapon)
 	current_weapon = new_weapon
+	GameEvents.weapon_changed.emit(current_weapon.name)
 	
 func collect_weapon(name):
 	#Add weapon to list
-	if name == "Shotgun":
+	if name == shotgun_name:
 		held_weapons.append(shotgun_scene)
-	elif name == "Pistol":
+	elif name == pistol_name:
 		held_weapons.append(pistol_scene)
-	elif name == "Knife":
+	elif name == knife_name:
 		held_weapons.append(knife_scene)
 	else:
 		print("Weapon name not valid. Cannot equip!")
@@ -80,8 +84,6 @@ func collect_weapon(name):
 	
 	#Automatically Equip
 	current_weapon_index = held_weapons.size() - 1
-	print("Held Weapons: " + str(held_weapons.size()))
-	print("Weapon_index: " + str(current_weapon_index))
 	equip_weapon(current_weapon_index)
 	
 func cycle_weapon(direction: int):
@@ -90,15 +92,12 @@ func cycle_weapon(direction: int):
 	#Must reset if wraps around backwards
 	if current_weapon_index < 0:
 		current_weapon_index = held_weapons.size() - 1
-	
-	print("Current_weapon_index: {current_weapon_index}")
-	print("Weapon at index: {held_weapons[current_weapon_index]}")
 		
 	equip_weapon(current_weapon_index)
 		
 func switch_weapon():
 	#Only cycle if more than one weapon is held
-	if held_weapons.size() > 2:
+	if held_weapons.size() > 1:
 		if Input.is_action_just_pressed("next_weapon"):
 			cycle_weapon(1)
 		elif Input.is_action_just_pressed("previous_weapon"):
