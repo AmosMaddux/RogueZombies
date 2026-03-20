@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://dp6bn41f084ja"]
+
+[ext_resource type="Script" uid="uid://dj0vynegfymx5" path="res://scripts/turret_enemy.gd" id="1_3sh46"]
+[ext_resource type="PackedScene" uid="uid://ctk6ckc7n1khw" path="res://scenes/vomit_projectile.tscn" id="2_ogben"]
+[ext_resource type="Texture2D" uid="uid://bs3fxiq0ssjx4" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Turret Zombie Animation Frames/Zombie-Tileset---_0461_Capa-462.png" id="2_okdyq"]
+[ext_resource type="Texture2D" uid="uid://lh7l6du7pebu" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Turret Zombie Animation Frames/Zombie-Tileset---_0462_Capa-463.png" id="3_ogben"]
+[ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="4_okdyq"]
+[ext_resource type="Texture2D" uid="uid://bvmaucelt0k2t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0380_Capa-381.png" id="5_ogben"]
+[ext_resource type="Texture2D" uid="uid://b0jy4vtldvpj6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0381_Capa-382.png" id="6_8lb8d"]
+[ext_resource type="Texture2D" uid="uid://cofak1boi3q06" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0382_Capa-383.png" id="7_wl731"]
+[ext_resource type="Texture2D" uid="uid://bpbso3flny5mo" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0383_Capa-384.png" id="8_ubkp3"]
+[ext_resource type="Texture2D" uid="uid://bsmm5cao4ao8a" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Kid Zombie Animation Frames/Zombie-Tileset---_0439_Capa-440.png" id="9_n22lk"]
+[ext_resource type="Texture2D" uid="uid://chfyctfxxuhff" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0448_Capa-449.png" id="10_8lb8d"]
+[ext_resource type="Texture2D" uid="uid://d36ob53y1wf61" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0449_Capa-450.png" id="11_wl731"]
+[ext_resource type="Texture2D" uid="uid://fdbdufq6iqy" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0450_Capa-451.png" id="12_ubkp3"]
+[ext_resource type="Texture2D" uid="uid://dt7tagc1m0a6b" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0451_Capa-452.png" id="13_n22lk"]
+[ext_resource type="Texture2D" uid="uid://dapddi6w0fhqj" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0452_Capa-453.png" id="14_m8d1o"]
+[ext_resource type="Texture2D" uid="uid://chr7hpu4lie73" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0453_Capa-454.png" id="15_khngv"]
+[ext_resource type="Texture2D" uid="uid://cb2qbd1wen23i" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0454_Capa-455.png" id="16_ej5ch"]
+[ext_resource type="Texture2D" uid="uid://c45nqiyj3mnpf" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0455_Capa-456.png" id="17_lcmvk"]
+[ext_resource type="Texture2D" uid="uid://ch50a5b0esb5o" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0456_Capa-457.png" id="18_m0mv1"]
+[ext_resource type="Texture2D" uid="uid://2h5435qno7jg" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0457_Capa-458.png" id="19_oclga"]
+[ext_resource type="Texture2D" uid="uid://bbrmpyljx56ay" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0458_Capa-459.png" id="20_tp6vb"]
+[ext_resource type="Texture2D" uid="uid://c8onps3v28fs" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Animation Frames/Zombie-Tileset---_0459_Capa-460.png" id="21_e6bnq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_okdyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ogben")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_okdyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ogben")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_okdyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ogben")
+}],
+"loop": false,
+"name": &"damage_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_okdyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ogben")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8lb8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wl731")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ubkp3")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_n22lk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_8lb8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wl731")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ubkp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n22lk")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_m8d1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_khngv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ej5ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lcmvk")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_m0mv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_oclga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_tp6vb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_e6bnq")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
+size = Vector2(14, 14)
+
+[node name="TurretEnemy" type="CharacterBody2D" unique_id=1152867235 groups=["enemy"]]
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_3sh46")
+vomit_projectile = ExtResource("2_ogben")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_md0e3")
+animation = &"walk_down"
+
+[node name="VomitOrigin" type="Marker2D" parent="Visuals" unique_id=344317172]
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_7p1mj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=402544949]
+path_desired_distance = 10.0

@@ -3,29 +3,32 @@ extends CharacterBody2D
 
 #Vars
 #Movement vars
-@export var min_speed := 15
-@export var max_speed := 45
+var min_speed := 10
+var max_speed := 30
 var speed = 30
 const JUMP_VELOCITY = -400.0
 
 #Health Vars
-@export var health = 100
+var health = 100
 var is_stunned := false
 var is_alive = true
 
 #Attack Vars
 var is_attacking := false
-@export var min_attack_distance := 40
-@export var damage_amount := 25
+var min_attack_distance := 150
 var distance_to_player := 0.0
 
 #Child Nodes
 @onready var animated_sprite_2d: AnimatedSprite2D = $Visuals/AnimatedSprite2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var vomit_origin: Marker2D = $Visuals/VomitOrigin
 
 #Other Nodes
 @onready var player: Player = %Player
 @onready var visuals: Node2D = $Visuals
+
+#PackedScenes
+@export var vomit_projectile: PackedScene 
 
 func animate_damage():
 	animated_sprite_2d.play("damage_idle")
@@ -71,9 +74,10 @@ func move():
 	move_and_slide()
 	
 func start_attack():
+	print("Distance to player: " + str(distance_to_player))
+	print("Min Attack Distance: " + str(min_attack_distance))
 	is_attacking = true
 	var x_direction = -1 if velocity.x > 0 else 1
-	print("x_dirction is " + str(x_direction))
 	velocity = Vector2.ZERO
 	var tween = create_tween()
 	
@@ -90,12 +94,14 @@ func start_attack():
 	
 	#Timeout and reset is_attacking
 	tween.tween_callback(func(): animated_sprite_2d.frame = 0)
-	tween.tween_interval(0.5)
+	tween.tween_interval(1)
 	tween.tween_callback(func(): is_attacking = false)
 	
 func attack():
-	if distance_to_player < min_attack_distance and is_alive:
-		player.take_damage(damage_amount)
+	if is_alive:
+		var vomit = vomit_projectile.instantiate()
+		vomit.global_transform = vomit_origin.global_transform
+		get_tree().root.add_child(vomit)
 	
 func _ready() -> void:
 	speed = randf_range(min_speed, max_speed)

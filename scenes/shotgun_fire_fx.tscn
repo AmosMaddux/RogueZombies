@@ -31,7 +31,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"fire",
-"speed": 12.0
+"speed": 15.0
 }]
 
 [node name="ShotgunFireFX" type="Node2D" unique_id=1594859766]
@@ -40,5 +40,6 @@ script = ExtResource("1_njdne")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=235068515]
 sprite_frames = SubResource("SpriteFrames_jao08")
 animation = &"fire"
+autoplay = "fire"
 frame = 5
 frame_progress = 1.0

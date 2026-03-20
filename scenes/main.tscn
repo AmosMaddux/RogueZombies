@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bgg0mdoo0bucx" path="res://scenes/terrain.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bj0ykvpfbgkm7" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cv5r7nxxjb670" path="res://scenes/enemy.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://d2g6upuptqrt8" path="res://scenes/fast_enemy.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dp6bn41f084ja" path="res://scenes/turret_enemy.tscn" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://m1uii5wbwtp" path="res://scenes/hud.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://d3s5rlr588dau" path="res://scenes/weapon_pickup.tscn" id="7_tipki"]
 
@@ -11,6 +13,7 @@
 [node name="Terrain" parent="." unique_id=1159906809 instance=ExtResource("1_0wfyh")]
 
 [node name="Enemy" parent="Terrain" unique_id=1152867235 instance=ExtResource("4_jyhfs")]
+visible = false
 position = Vector2(215, 63)
 
 [node name="Player" parent="Terrain" unique_id=768004286 instance=ExtResource("2_sugp2")]
@@ -28,5 +31,12 @@ is_knife = true
 [node name="WeaponPickup3" parent="Terrain" unique_id=35493233 instance=ExtResource("7_tipki")]
 position = Vector2(313, 178)
 is_shotgun = true
+
+[node name="FastEnemy" parent="Terrain" unique_id=340307727 instance=ExtResource("5_tefeu")]
+visible = false
+position = Vector2(322, 101)
+min_speed = 45
+
+[node name="TurretEnemy" parent="Terrain" unique_id=1969092589 instance=ExtResource("6_o6xl0")]
 
 [node name="HUD" parent="." unique_id=1773076948 instance=ExtResource("6_tefeu")]

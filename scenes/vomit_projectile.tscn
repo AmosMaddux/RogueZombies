@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ctk6ckc7n1khw"]
+
+[ext_resource type="Texture2D" uid="uid://c5mgm0ixdgj81" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Vomit Shooting Animation Frames/Zombie-Tileset---_0470_Capa-471.png" id="1_3ik5n"]
+[ext_resource type="Script" uid="uid://cjabnmg1wxup1" path="res://scripts/vomit_projectile.gd" id="1_puotu"]
+[ext_resource type="Texture2D" uid="uid://djdvr08woyqd3" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Vomit Shooting Animation Frames/Zombie-Tileset---_0471_Capa-472.png" id="2_puotu"]
+[ext_resource type="Texture2D" uid="uid://dc0yseh27vt4l" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Vomit Shooting Animation Frames/Zombie-Tileset---_0472_Capa-473.png" id="3_x4ogp"]
+[ext_resource type="Texture2D" uid="uid://dnrlp1gcwyer7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Vomit Shooting Animation Frames/Zombie-Tileset---_0473_Capa-474.png" id="4_j46mv"]
+[ext_resource type="Texture2D" uid="uid://d12hdl8yb8035" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Vomit Shooting Animation Frames/Zombie-Tileset---_0474_Capa-475.png" id="5_6lgdr"]
+[ext_resource type="Texture2D" uid="uid://5t57lvt7gbt1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Turret Zombie Vomit Shooting Animation Frames/Zombie-Tileset---_0475_Capa-476.png" id="6_bbj0v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0qxl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3ik5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_puotu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x4ogp")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x4ogp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j46mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6lgdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bbj0v")
+}],
+"loop": false,
+"name": &"splat",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ik5n"]
+radius = 4.0
+
+[node name="VomitProjectile" type="Area2D" unique_id=450644489]
+script = ExtResource("1_puotu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1032847621]
+sprite_frames = SubResource("SpriteFrames_t0qxl")
+animation = &"flying"
+autoplay = "flying"
+frame = 2
+frame_progress = 0.69833475
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=301276977]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_3ik5n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
