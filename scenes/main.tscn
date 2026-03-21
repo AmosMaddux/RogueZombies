@@ -13,7 +13,6 @@
 [node name="Terrain" parent="." unique_id=1159906809 instance=ExtResource("1_0wfyh")]
 
 [node name="Enemy" parent="Terrain" unique_id=1152867235 instance=ExtResource("4_jyhfs")]
-visible = false
 position = Vector2(215, 63)
 
 [node name="Player" parent="Terrain" unique_id=768004286 instance=ExtResource("2_sugp2")]
@@ -33,7 +32,6 @@ position = Vector2(313, 178)
 is_shotgun = true
 
 [node name="FastEnemy" parent="Terrain" unique_id=340307727 instance=ExtResource("5_tefeu")]
-visible = false
 position = Vector2(322, 101)
 min_speed = 45
 
