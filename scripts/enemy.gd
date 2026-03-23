@@ -24,7 +24,7 @@ var distance_to_player := 0.0
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 #Other Nodes
-@onready var player: Player = %Player
+@onready var player: Player
 @onready var visuals: Node2D = $Visuals
 
 func animate_damage():
@@ -99,6 +99,7 @@ func attack():
 	
 func _ready() -> void:
 	speed = randf_range(min_speed, max_speed)
+	player = get_tree().get_first_node_in_group("player")
 	
 	
 func _physics_process(delta: float) -> void:

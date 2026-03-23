@@ -40,16 +40,19 @@ is_knife = true
 position = Vector2(313, 178)
 is_shotgun = true
 
-[node name="SpawnController" parent="." unique_id=1339563444 node_paths=PackedStringArray("spawnpoints_node") instance=ExtResource("6_o6xl0")]
+[node name="SpawnController" parent="." unique_id=1339563444 node_paths=PackedStringArray("spawnpoints_node", "enemy_container") instance=ExtResource("6_o6xl0")]
 spawnpoints_node = NodePath("SpawnPoints")
+enemy_container = NodePath("../Enemies")
 
 [node name="SpawnPoints" type="Node2D" parent="SpawnController" unique_id=549648221]
 
 [node name="Marker2D" type="Marker2D" parent="SpawnController/SpawnPoints" unique_id=1335003017]
-position = Vector2(325, 263)
+position = Vector2(195, 36)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnController/SpawnPoints" unique_id=263277812]
-position = Vector2(380, 317)
+position = Vector2(973, 409)
 
 [node name="Marker2D3" type="Marker2D" parent="SpawnController/SpawnPoints" unique_id=1451996995]
-position = Vector2(478, 288)
+position = Vector2(149, 576)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1234895025]

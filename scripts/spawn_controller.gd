@@ -9,7 +9,10 @@ extends Node2D
 @export var fast_zombie: PackedScene
 @export var turret_zombie: PackedScene
 
+#Other Nodes
 @export var spawnpoints_node: Node2D
+@export var enemy_container: Node2D
+
 var spawnpoints = []
 
 var zoms_to_spawn = 5
@@ -54,7 +57,7 @@ func spawn_zombie():
 		var spawnpoint = spawnpoints.pick_random().global_position
 		var new_enemy = big_zombie.instantiate()
 		new_enemy.global_position = spawnpoint
-		get_tree().root.add_child(new_enemy)
+		enemy_container.add_child(new_enemy)
 		
 		#Change vars
 		zoms_to_spawn -= 1
