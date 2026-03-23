@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bgdbemr0ss1b8"]
+
+[ext_resource type="Script" uid="uid://didnvva1colqk" path="res://scripts/spawn_controller.gd" id="1_gkhyp"]
+[ext_resource type="PackedScene" uid="uid://cv5r7nxxjb670" path="res://scenes/enemy.tscn" id="2_bd4fu"]
+[ext_resource type="PackedScene" uid="uid://d2g6upuptqrt8" path="res://scenes/fast_enemy.tscn" id="3_7yugw"]
+[ext_resource type="PackedScene" uid="uid://dp6bn41f084ja" path="res://scenes/turret_enemy.tscn" id="4_pbdmg"]
+
+[node name="SpawnController" type="Node2D" unique_id=1339563444]
+script = ExtResource("1_gkhyp")
+big_zombie = ExtResource("2_bd4fu")
+fast_zombie = ExtResource("3_7yugw")
+turret_zombie = ExtResource("4_pbdmg")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=216943264]
+
+[node name="WaveTimer" type="Timer" parent="." unique_id=1298760241]
+wait_time = 15.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

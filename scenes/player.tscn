@@ -154,6 +154,7 @@ size = Vector2(10, 12)
 
 [node name="Player" type="CharacterBody2D" unique_id=768004286 groups=["player"]]
 y_sort_enabled = true
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_y4r1p")
 shotgun_scene = ExtResource("2_4r5pv")

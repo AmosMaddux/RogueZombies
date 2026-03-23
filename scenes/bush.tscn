@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://by3tukebk4dry"]
+
+[ext_resource type="Texture2D" uid="uid://c0enfx5lxscc4" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Trees/Zombie-Tileset---_0134_Capa-135.png" id="1_lad4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhlg"]
+size = Vector2(14, 14)
+
+[node name="Bush" type="StaticBody2D" unique_id=532860106]
+z_index = 10
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=888751260]
+texture = ExtResource("1_lad4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=652513031]
+shape = SubResource("RectangleShape2D_vjhlg")
