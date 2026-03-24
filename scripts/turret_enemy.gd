@@ -24,12 +24,27 @@ var distance_to_player := 0.0
 @onready var vomit_origin: Marker2D = $Visuals/VomitOrigin
 
 #Other Nodes
-@onready var player: Player = %Player
+@onready var player: Player
 @onready var visuals: Node2D = $Visuals
+@export var money_scene: PackedScene
 
 #PackedScenes
 @export var vomit_projectile: PackedScene 
 
+func _ready() -> void:
+	speed = randf_range(min_speed, max_speed)
+	player = get_tree().get_first_node_in_group("player")
+
+	
+func _physics_process(delta: float) -> void:
+	if not is_stunned and is_alive:
+		#Check if close enough to attack
+		distance_to_player = global_position.distance_to(player.global_position)
+		if not is_attacking and (distance_to_player < min_attack_distance):
+			start_attack()
+		elif not is_attacking:
+			move()
+			
 func animate_damage():
 	animated_sprite_2d.play("damage_idle")
 	await animated_sprite_2d.animation_finished
@@ -53,6 +68,12 @@ func die():
 	is_alive = false
 	animated_sprite_2d.play("die")
 	await animated_sprite_2d.animation_finished
+	
+	#Instantiate Money object at location
+	var money = money_scene.instantiate()
+	money.global_position = self.global_position
+	get_tree().root.add_child(money)
+	
 	queue_free()
 	
 func take_damage(damage_amount: int):
@@ -102,16 +123,6 @@ func attack():
 		var vomit = vomit_projectile.instantiate()
 		vomit.global_transform = vomit_origin.global_transform
 		get_tree().root.add_child(vomit)
-	
-func _ready() -> void:
-	speed = randf_range(min_speed, max_speed)
-	
-	
-func _physics_process(delta: float) -> void:
-	if not is_stunned and is_alive:
-		#Check if close enough to attack
-		distance_to_player = global_position.distance_to(player.global_position)
-		if not is_attacking and (distance_to_player < min_attack_distance):
-			start_attack()
-		elif not is_attacking:
-			move()
+
+func set_vars(health_wave_mod: int):
+	health += health_wave_mod

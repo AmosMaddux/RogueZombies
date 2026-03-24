@@ -149,11 +149,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r5pv"]
-size = Vector2(10, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4ail"]
+radius = 7.0
 
 [node name="Player" type="CharacterBody2D" unique_id=768004286 groups=["player"]]
 y_sort_enabled = true
+scale = Vector2(0.8, 0.8)
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_y4r1p")
@@ -170,7 +171,7 @@ animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1450997048]
 position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_4r5pv")
+shape = SubResource("CircleShape2D_i4ail")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=898060502]
 zoom = Vector2(4, 4)

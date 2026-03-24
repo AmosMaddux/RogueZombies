@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c4mfa1lng0tp4"]
+
+[ext_resource type="Texture2D" uid="uid://4pm4d1005y4s" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Modular Fences/Zombie-Tileset---_0203_Capa-204.png" id="1_xfvdi"]
+[ext_resource type="Script" uid="uid://dw0cd3s3fr0od" path="res://scripts/gate.gd" id="1_xwxio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwxio"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfvdi"]
+size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xwxio"]
+
+[node name="Gate" type="Area2D" unique_id=211598144]
+script = ExtResource("1_xwxio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1998697335]
+shape = SubResource("RectangleShape2D_xwxio")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=566849552]
+texture = ExtResource("1_xfvdi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=279102712]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=904033448]
+shape = SubResource("RectangleShape2D_xfvdi")
+
+[node name="Price" type="Label" parent="." unique_id=780791517]
+visible = false
+offset_left = -19.0
+offset_top = -37.0
+offset_right = 21.0
+offset_bottom = -14.0
+text = "$000"
+label_settings = SubResource("LabelSettings_xwxio")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

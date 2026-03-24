@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dlpbqodyye8pc"]
+
+[ext_resource type="Script" uid="uid://c35g06ibkaj2o" path="res://scripts/money.gd" id="1_deygv"]
+[ext_resource type="Texture2D" uid="uid://cb0xq84g6yvmp" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Spawning Money Animation Frames/Zombie-Tileset---_0350_Capa-351.png" id="1_rdbfl"]
+[ext_resource type="Texture2D" uid="uid://bcee46kfkfqom" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Spawning Money Animation Frames/Zombie-Tileset---_0351_Capa-352.png" id="2_deygv"]
+[ext_resource type="Texture2D" uid="uid://b0l0msxg4ocox" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Spawning Money Animation Frames/Zombie-Tileset---_0352_Capa-353.png" id="3_iak8e"]
+[ext_resource type="Texture2D" uid="uid://p01egg7yfo38" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Spawning Money Animation Frames/Zombie-Tileset---_0353_Capa-354.png" id="4_qwpq8"]
+[ext_resource type="Texture2D" uid="uid://xrhb60o31flt" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Spawning Money Animation Frames/Zombie-Tileset---_0354_Capa-355.png" id="5_hd7xm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pg1l3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rdbfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_deygv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iak8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qwpq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hd7xm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6k8k"]
+size = Vector2(12, 8)
+
+[node name="Money" type="Area2D" unique_id=2056231134]
+script = ExtResource("1_deygv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1995126435]
+sprite_frames = SubResource("SpriteFrames_pg1l3")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1396457943]
+shape = SubResource("RectangleShape2D_h6k8k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

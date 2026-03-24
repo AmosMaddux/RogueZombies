@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c5robux7nef2r"]
+
+[ext_resource type="Texture2D" uid="uid://bbmm0ssrjiw2u" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Store Truck with Smoking Guy Animation Frames/Zombie-Tileset---_0176_Capa-177.png" id="1_codmc"]
+[ext_resource type="Script" uid="uid://bp7sytkialhgk" path="res://scripts/store.gd" id="1_dq3y1"]
+[ext_resource type="Texture2D" uid="uid://sa8yjyk2ey01" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Store Truck with Smoking Guy Animation Frames/Zombie-Tileset---_0177_Capa-178.png" id="2_dq3y1"]
+[ext_resource type="PackedScene" uid="uid://cv651k3i40off" path="res://scenes/health_pickup.tscn" id="2_vb4ln"]
+[ext_resource type="Texture2D" uid="uid://bmuhl1ennsmc" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Store Truck with Smoking Guy Animation Frames/Zombie-Tileset---_0178_Capa-179.png" id="3_gf6f2"]
+[ext_resource type="PackedScene" uid="uid://el5tgo4ki57t" path="res://scenes/pistol_ammo_pickup.tscn" id="3_tmp5q"]
+[ext_resource type="PackedScene" uid="uid://dtyoewg7ejvx0" path="res://scenes/shotgun_ammo_pickup.tscn" id="4_phafb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bups"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_codmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dq3y1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gf6f2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb4ln"]
+size = Vector2(41, 24)
+
+[node name="Store" type="StaticBody2D" unique_id=723617124]
+script = ExtResource("1_dq3y1")
+health_pickup_scene = ExtResource("2_vb4ln")
+pistol_ammo_pickup_scene = ExtResource("3_tmp5q")
+shotgun_ammo_pickup_scene = ExtResource("4_phafb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2069504924]
+sprite_frames = SubResource("SpriteFrames_5bups")
+autoplay = "default"
+frame = 2
+frame_progress = 0.059076097
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=739118860]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_vb4ln")
+
+[node name="HealthPickupLocation" type="Marker2D" parent="." unique_id=1523905588]
+position = Vector2(-31, 28)
+
+[node name="PistolAmmoLocation" type="Marker2D" parent="." unique_id=972585721]
+position = Vector2(0, 28)
+
+[node name="ShotgunAmmoLocation" type="Marker2D" parent="." unique_id=1990749595]
+position = Vector2(31, 28)

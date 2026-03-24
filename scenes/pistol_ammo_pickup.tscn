@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://el5tgo4ki57t"]
+
+[ext_resource type="Script" uid="uid://cqts8eab835m5" path="res://scripts/pistol_ammo_pickup.gd" id="1_e0v6a"]
+[ext_resource type="Texture2D" uid="uid://sxwd5id0i783" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0342_Capa-343.png" id="2_e0v6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cqbe"]
+size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3p6mu"]
+
+[node name="PistolAmmoPickup" type="Area2D" unique_id=1548139105]
+script = ExtResource("1_e0v6a")
+
+[node name="PistolAmmoSprite" type="Sprite2D" parent="." unique_id=232831654]
+texture = ExtResource("2_e0v6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221390234]
+shape = SubResource("RectangleShape2D_7cqbe")
+
+[node name="Label" type="Label" parent="." unique_id=2101201498]
+visible = false
+offset_left = -46.0
+offset_top = -51.0
+offset_right = 52.0
+offset_bottom = -28.0
+text = "Pistol Ammo"
+
+[node name="Price" type="Label" parent="Label" unique_id=286829597]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 17.0
+offset_right = 67.0
+offset_bottom = 40.0
+text = "$000"
+label_settings = SubResource("LabelSettings_3p6mu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

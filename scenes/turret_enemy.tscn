@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dp6bn41f084ja"]
 
 [ext_resource type="Script" uid="uid://dj0vynegfymx5" path="res://scripts/turret_enemy.gd" id="1_3sh46"]
+[ext_resource type="PackedScene" uid="uid://dlpbqodyye8pc" path="res://scenes/money.tscn" id="2_8lb8d"]
 [ext_resource type="PackedScene" uid="uid://ctk6ckc7n1khw" path="res://scenes/vomit_projectile.tscn" id="2_ogben"]
 [ext_resource type="Texture2D" uid="uid://bs3fxiq0ssjx4" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Turret Zombie Animation Frames/Zombie-Tileset---_0461_Capa-462.png" id="2_okdyq"]
 [ext_resource type="Texture2D" uid="uid://lh7l6du7pebu" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Turret Zombie Animation Frames/Zombie-Tileset---_0462_Capa-463.png" id="3_ogben"]
@@ -128,13 +129,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
-size = Vector2(14, 14)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lb8d"]
+radius = 6.0
 
 [node name="TurretEnemy" type="CharacterBody2D" unique_id=1152867235 groups=["enemy"]]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_3sh46")
+money_scene = ExtResource("2_8lb8d")
 vomit_projectile = ExtResource("2_ogben")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
@@ -148,8 +150,10 @@ animation = &"walk_down"
 position = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
+y_sort_enabled = true
 position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_7p1mj")
+shape = SubResource("CircleShape2D_8lb8d")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=402544949]
-path_desired_distance = 10.0
+path_desired_distance = 2.0
+target_desired_distance = 2.0

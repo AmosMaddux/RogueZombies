@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2g6upuptqrt8"]
 
 [ext_resource type="Script" uid="uid://cm0xvcl3nk7it" path="res://scripts/fast_enemy.gd" id="1_hox2f"]
+[ext_resource type="PackedScene" uid="uid://dlpbqodyye8pc" path="res://scenes/money.tscn" id="2_ju73p"]
 [ext_resource type="Texture2D" uid="uid://u2sjw1txej5t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Kid Zombie Animation Frames/Zombie-Tileset---_0446_Capa-447.png" id="2_qnp8r"]
 [ext_resource type="Texture2D" uid="uid://b03jarbef4x6s" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Kid Zombie Animation Frames/Zombie-Tileset---_0447_Capa-448.png" id="3_ju73p"]
 [ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="4_8k455"]
@@ -124,8 +125,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
-size = Vector2(14, 14)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ju73p"]
+radius = 5.0
 
 [node name="FastEnemy" type="CharacterBody2D" unique_id=1152867235 groups=["enemy"]]
 y_sort_enabled = true
@@ -135,6 +136,7 @@ min_speed = 60
 max_speed = 90
 health = 50
 min_attack_distance = 10
+money_scene = ExtResource("2_ju73p")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
 
@@ -144,8 +146,10 @@ sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=622266907]
+y_sort_enabled = true
 position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_7p1mj")
+shape = SubResource("CircleShape2D_ju73p")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=402544949]
-path_desired_distance = 10.0
+path_desired_distance = 2.0
+target_desired_distance = 2.0

@@ -16,6 +16,9 @@ var is_alive := true
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
+#Money
+@export var money = 0
+
 #Weapon Vars
 var is_weapon_equipped := false
 @export var held_weapons: Array[PackedScene] = []
@@ -36,6 +39,62 @@ var shotgun_equipped := false
 @export var pistol_scene: PackedScene
 @export var knife_scene: PackedScene
 
+var pistol_max_ammo := 8
+var pistol_current_ammo := 0
+var pistol_ammo_reserves := 32
+
+var shotgun_max_ammo := 4
+var shotgun_current_ammo := 0
+var shotgun_ammo_reserves := 16
+
+func _ready() -> void:
+	#Initialize UI
+	await get_tree().process_frame
+	GameEvents.player_health_changed.emit(health)
+	GameEvents.money_changed.emit(money)
+		
+func _process(delta: float) -> void:
+	if is_alive:
+		rotate_weapon_pivot()
+		
+		#Input actions
+		switch_weapon()
+		attack()
+		reload_weapon()
+	
+
+func _physics_process(delta: float) -> void:
+	if is_alive:
+		move()
+		
+func change_money(item, price: int) -> bool:
+	if item == "money":
+		money += price
+		GameEvents.money_changed.emit(money)
+		return true
+	else:
+		if money >= price:
+			if item == "gate":
+				GameEvents.gate_purchased.emit()
+				print("Purchased gate")
+			elif item == "health":
+				health += 25
+				GameEvents.player_health_changed.emit(health)
+				print("Healed!")
+			elif item == "pistol_ammo":
+				pistol_ammo_reserves += 32
+				print("Bought Pistol Ammo!")
+			elif item == "shotgun_ammo":
+				shotgun_ammo_reserves += 16
+				print("Bought shotgun ammo!")
+			return true
+		else:
+			return false
+		
+	print("New Money amount: " + str(money))
+	GameEvents.money_changed.emit(money)
+		
+		
 func take_damage(damage_amount: int):
 	health -= damage_amount
 	print("Player has taken damage! Health: " + str(health))
@@ -68,6 +127,7 @@ func equip_weapon(index: int):
 	var new_weapon = held_weapons[index].instantiate()
 	weapon_slot.add_child(new_weapon)
 	current_weapon = new_weapon
+	current_weapon.set_up()
 	GameEvents.weapon_changed.emit(current_weapon.name)
 	
 func collect_weapon(name):
@@ -155,22 +215,3 @@ func reload_weapon():
 		var current_weapon = weapon_slot.get_child(0) if weapon_pivot.get_child_count() > 0 else null
 		if current_weapon != null and current_weapon is not Knife:
 			current_weapon.reload()
-
-func _ready() -> void:
-	#Initialize UI
-	await get_tree().process_frame
-	GameEvents.player_health_changed.emit(health)
-		
-func _process(delta: float) -> void:
-	if is_alive:
-		rotate_weapon_pivot()
-		
-		#Input actions
-		switch_weapon()
-		attack()
-		reload_weapon()
-	
-
-func _physics_process(delta: float) -> void:
-	if is_alive:
-		move()

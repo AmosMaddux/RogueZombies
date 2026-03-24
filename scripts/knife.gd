@@ -41,6 +41,8 @@ func attack(origin: Marker2D):
 			tween.tween_interval(0.1)
 			tween.tween_callback(func(): is_attacking = false)
 
+func set_up():
+	GameEvents.player_ammo_changed.emit(0,0)
 		
 func equip_to_player(player: CharacterBody2D):
 	#Add knife to weapon slot in player and remove from main scene

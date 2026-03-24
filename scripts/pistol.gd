@@ -4,8 +4,7 @@ class_name Pistol
 #Vars
 var is_attacking = false
 @export var attack_timeout := 0.1
-@export var max_ammo := 8
-var current_ammo := 0
+
 
 #Child Nodes
 @onready var hitbox: CollisionShape2D = $hitbox/CollisionShape2D
@@ -16,18 +15,19 @@ var current_ammo := 0
 @export var bullet_scene: PackedScene
 @export var fire_fx: PackedScene
 
+var player: Player
+
 func _ready() -> void:
-	current_ammo = max_ammo
+	player = get_tree().get_first_node_in_group("player")
 	
 	
 
 func attack(origin: Marker2D):
-	if cooldown.is_stopped() and current_ammo > 0:
+	if cooldown.is_stopped() and player.pistol_current_ammo > 0:
 		
-		current_ammo -= 1
-		GameEvents.player_ammo_changed.emit(current_ammo)
+		player.pistol_current_ammo -= 1
+		GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)
 		
-		print("You have " + str(current_ammo) + " ammo")
 		#Instantiate bullet and flash
 		var bullet := bullet_scene.instantiate()
 		var flash := fire_fx.instantiate()
@@ -45,19 +45,14 @@ func attack(origin: Marker2D):
 		cooldown.start()
 		
 func reload():
-	current_ammo = max_ammo
-	GameEvents.player_ammo_changed.emit(current_ammo)
+	
+	while player.pistol_ammo_reserves > 0 and player.pistol_current_ammo < 8:
+		player.pistol_ammo_reserves -= 1
+		player.pistol_current_ammo += 1
+		
+	GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)
 
 		
-func equip_to_player(player: CharacterBody2D):
-	#Add knife to weapon slot in player and remove from main scene
-	var slot = player.get_node("WeaponPivot/WeaponSlot")
-	get_parent().remove_child(self)
-	slot.add_child(self)
-	
-	# Set position and rotation local to weapon slot
-	position = Vector2.ZERO
-	rotation = 0
-	
+func set_up():
 	#Initialize UI
-	GameEvents.player_ammo_changed.emit(current_ammo)
+	GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)

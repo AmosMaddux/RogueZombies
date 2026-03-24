@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cv651k3i40off"]
+
+[ext_resource type="Script" uid="uid://dr7f07gecdwxc" path="res://scripts/health_pickup.gd" id="1_3p6mu"]
+[ext_resource type="Texture2D" uid="uid://clj1arhi70px3" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0340_Capa-341.png" id="2_i662h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cqbe"]
+size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3p6mu"]
+
+[node name="HealthPickup" type="Area2D" unique_id=1548139105]
+script = ExtResource("1_3p6mu")
+
+[node name="HealthSprite" type="Sprite2D" parent="." unique_id=232831654]
+texture = ExtResource("2_i662h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221390234]
+shape = SubResource("RectangleShape2D_7cqbe")
+
+[node name="Price" type="Label" parent="." unique_id=286829597]
+visible = false
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -12.0
+text = "$000"
+label_settings = SubResource("LabelSettings_3p6mu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

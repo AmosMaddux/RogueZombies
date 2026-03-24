@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var testing_mode = false
+
 #Child nodes
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var wave_timer: Timer = $WaveTimer
@@ -15,25 +17,35 @@ extends Node2D
 
 var spawnpoints = []
 
-var zoms_to_spawn = 5
-var zoms_spawned = 0
+var big_zoms_to_spawn = 5
+var big_zoms_spawned = 0
+var fast_zoms_to_spawn = 5
+var fast_zoms_spawned = 0
+var turret_zoms_to_spawn = 5
+var turret_zoms_spawned = 0
 
-var current_wave = 1
+var current_wave = 0
 var in_wave = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawnpoints = spawnpoints_node.get_children()
-	start_wave()
+	if not testing_mode:
+		spawnpoints = spawnpoints_node.get_children()
+		start_wave()
 	
 	
 func start_wave():
 	print("Wave starting...")
 	#Reset wave Vars
 	current_wave += 1
-	zoms_spawned = 0
-	zoms_to_spawn = ceil(current_wave * 1.5)
-	
+	big_zoms_spawned = 0
+	big_zoms_to_spawn = ceil(current_wave * 1.5)
+	fast_zoms_to_spawn = 0
+	fast_zoms_to_spawn = ceil(floor(current_wave / 3) * 2)
+	turret_zoms_spawned = 0
+	turret_zoms_to_spawn = ceil(floor(current_wave / 5) * 2)
+	print("FastZoms: " + str(fast_zoms_to_spawn) + " TurretZoms: " + str(turret_zoms_to_spawn))
+	print("CurrentWave: " + str(current_wave) + " Calc: " + str(floor(current_wave / 2)))
 	#Spawn initial zombie
 	spawn_zombie()
 	
@@ -52,25 +64,66 @@ func stop_wave():
 	wave_timer.start()
 	
 func spawn_zombie():
-	if zoms_to_spawn > 0 and in_wave:
-		#Get spawnpoint and add enemy to tree
-		var spawnpoint = spawnpoints.pick_random().global_position
-		var new_enemy = big_zombie.instantiate()
-		new_enemy.global_position = spawnpoint
-		enemy_container.add_child(new_enemy)
-		
-		#Change vars
-		zoms_to_spawn -= 1
-		zoms_spawned += 1
-		print("Spawned zombie at " + str(spawnpoint))
-		print(str(zoms_to_spawn) + " zombies left in wave")
-		
+	if in_wave:
+		if big_zoms_to_spawn > 0:
+			#Get spawnpoint 
+			var spawnpoint = spawnpoints.pick_random().global_position
+			var new_enemy = big_zombie.instantiate()
+			
+			#Add more health to enemy depending on wave
+			new_enemy.set_vars((current_wave - 1 ) * 25)
+			
+			#Spawn enemy at spawn point
+			new_enemy.global_position = spawnpoint
+			enemy_container.add_child(new_enemy)
+			
+			#Change vars
+			big_zoms_to_spawn -= 1
+			big_zoms_spawned += 1
+			print("Spawned zombie at " + str(spawnpoint))
+			print(str(big_zoms_to_spawn) + " zombies left in wave")
+		elif fast_zoms_to_spawn > 0:
+			#Get spawnpoint 
+			var spawnpoint = spawnpoints.pick_random().global_position
+			var new_enemy = fast_zombie.instantiate()
+			
+			#Add more health to enemy depending on wave
+			new_enemy.set_vars((current_wave - 1 ) * 25)
+			
+			#Spawn enemy at spawn point
+			new_enemy.global_position = spawnpoint
+			enemy_container.add_child(new_enemy)
+			
+			#Change vars
+			fast_zoms_to_spawn -= 1
+			fast_zoms_spawned += 1
+			print("Spawned zombie at " + str(spawnpoint))
+			print(str(fast_zoms_to_spawn) + " zombies left in wave")
+		elif turret_zoms_to_spawn > 0:
+			#Get spawnpoint 
+			var spawnpoint = spawnpoints.pick_random().global_position
+			var new_enemy = turret_zombie.instantiate()
+			
+			#Add more health to enemy depending on wave
+			new_enemy.set_vars((current_wave - 1 ) * 25)
+			
+			#Spawn enemy at spawn point
+			new_enemy.global_position = spawnpoint
+			enemy_container.add_child(new_enemy)
+			
+			#Change vars
+			turret_zoms_to_spawn -= 1
+			turret_zoms_spawned += 1
+			print("Spawned zombie at " + str(spawnpoint))
+			print(str(turret_zoms_to_spawn) + " zombies left in wave")
+			
 			
 func check_if_wave_over():
-	if in_wave and zoms_to_spawn <= 0:
+	if in_wave and big_zoms_to_spawn <= 0:
 		var enemies_left = get_tree().get_nodes_in_group("enemy")
 		
 		if enemies_left.size() == 0:
+			GameEvents.wave_over.emit()
 			stop_wave()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
