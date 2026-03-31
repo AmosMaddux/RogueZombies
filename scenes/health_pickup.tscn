@@ -17,12 +17,21 @@ texture = ExtResource("2_i662h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221390234]
 shape = SubResource("RectangleShape2D_7cqbe")
 
-[node name="Price" type="Label" parent="." unique_id=286829597]
+[node name="Label" type="Label" parent="." unique_id=1650379356]
 visible = false
-offset_left = -20.0
-offset_top = -35.0
-offset_right = 20.0
-offset_bottom = -12.0
+offset_left = -26.0
+offset_top = -48.0
+offset_right = 26.0
+offset_bottom = -25.0
+text = "Health"
+label_settings = SubResource("LabelSettings_3p6mu")
+
+[node name="Price" type="Label" parent="Label" unique_id=286829597]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 44.0
+offset_bottom = 40.0
 text = "$000"
 label_settings = SubResource("LabelSettings_3p6mu")
 

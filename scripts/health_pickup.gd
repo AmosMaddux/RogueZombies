@@ -1,7 +1,8 @@
 extends Area2D
 
 #Child Nodes
-@onready var price_label: Label = $Price
+@onready var price_label: Label = $Label/Price
+@onready var label: Label = $Label
 
 #Vars
 @export var price = 100
@@ -27,11 +28,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("Player entered!")
 		is_player_in_area = true
-		price_label.visible = true
+		label.visible = true
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("Player exited!")
 		is_player_in_area = false
-		price_label.visible = false
+		label.visible = false

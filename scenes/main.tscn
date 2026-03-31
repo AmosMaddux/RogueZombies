@@ -18,6 +18,7 @@ agent_radius = 7.0
 [node name="Main" type="Node2D" unique_id=112989706]
 
 [node name="HUD" parent="." unique_id=1773076948 instance=ExtResource("6_tefeu")]
+visible = false
 
 [node name="Player" parent="." unique_id=768004286 instance=ExtResource("2_sugp2")]
 unique_name_in_owner = true
@@ -84,4 +85,4 @@ position = Vector2(228, 455)
 y_sort_enabled = true
 
 [node name="Store" parent="." unique_id=723617124 instance=ExtResource("7_o6xl0")]
-position = Vector2(577, 301)
+position = Vector2(717, 710)
