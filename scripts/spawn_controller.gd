@@ -75,7 +75,7 @@ func spawn_zombie():
 		if skinny_zoms_to_spawn > 0:
 			#Get spawnpoint 
 			var spawnpoint = spawnpoints.pick_random().global_position
-			var new_enemy = big_zombie.instantiate()
+			var new_enemy = skinny_zombie.instantiate()
 			
 			#Add more health to enemy depending on wave
 			new_enemy.set_vars((current_wave - 1 ) * 25)
@@ -88,7 +88,7 @@ func spawn_zombie():
 			skinny_zoms_to_spawn -= 1
 			skinny_zoms_spawned += 1
 			print("Spawned zombie at " + str(spawnpoint))
-			print(str(big_zoms_to_spawn) + " zombies left in wave")
+			print(str(skinny_zoms_to_spawn) + " zombies left in wave")
 		elif big_zoms_to_spawn > 0:
 			#Get spawnpoint 
 			var spawnpoint = spawnpoints.pick_random().global_position
