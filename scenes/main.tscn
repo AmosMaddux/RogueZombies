@@ -19,16 +19,11 @@ agent_radius = 7.0
 
 [node name="HUD" parent="." unique_id=1773076948 instance=ExtResource("6_tefeu")]
 
-[node name="Player" parent="." unique_id=768004286 instance=ExtResource("2_sugp2")]
-unique_name_in_owner = true
-position = Vector2(417, 330)
-money = 1000
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=624919548 groups=["nav"]]
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_o6xl0")
 
 [node name="Terrain" parent="NavigationRegion2D" unique_id=1159906809 instance=ExtResource("1_0wfyh")]
-y_sort_enabled = true
 
 [node name="Gate" parent="NavigationRegion2D" unique_id=211598144 instance=ExtResource("6_tipki")]
 position = Vector2(733, 344)
@@ -50,6 +45,11 @@ position = Vector2(199, 183)
 
 [node name="Gate7" parent="NavigationRegion2D" unique_id=587782316 instance=ExtResource("6_tipki")]
 position = Vector2(217, 569)
+
+[node name="Player" parent="NavigationRegion2D" unique_id=768004286 instance=ExtResource("2_sugp2")]
+unique_name_in_owner = true
+position = Vector2(417, 330)
+money = 1000
 
 [node name="Pickups" type="Node" parent="." unique_id=1731698991]
 
