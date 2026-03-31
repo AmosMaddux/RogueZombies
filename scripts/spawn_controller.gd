@@ -7,6 +7,7 @@ extends Node2D
 @onready var wave_timer: Timer = $WaveTimer
 
 #PackedScenes
+@export var skinny_zombie: PackedScene
 @export var big_zombie: PackedScene
 @export var fast_zombie: PackedScene
 @export var turret_zombie: PackedScene
@@ -17,6 +18,8 @@ extends Node2D
 
 var spawnpoints = []
 
+var skinny_zoms_to_spawn = 5
+var skinny_zoms_spawned = 0
 var big_zoms_to_spawn = 5
 var big_zoms_spawned = 0
 var fast_zoms_to_spawn = 5
@@ -38,14 +41,18 @@ func start_wave():
 	print("Wave starting...")
 	#Reset wave Vars
 	current_wave += 1
+	#Spawn one and a half skinny zombies per wave
+	skinny_zoms_spawned = 0
+	skinny_zoms_to_spawn = ceil(current_wave * 1.5)
+	#Spawn big zombies equal to the current wave, starting at the third wave
 	big_zoms_spawned = 0
-	big_zoms_to_spawn = ceil(current_wave * 1.5)
+	big_zoms_to_spawn = ceil(current_wave - 2)
+	#Spawn 2 fast zombies for every third level starting on level 6
 	fast_zoms_to_spawn = 0
-	fast_zoms_to_spawn = ceil(floor(current_wave / 3) * 2)
+	fast_zoms_to_spawn = ceil((current_wave - 5) / 3 * 2)
+	#Spawn 2 turret zombies every fifth level starting on level 10
 	turret_zoms_spawned = 0
-	turret_zoms_to_spawn = ceil(floor(current_wave / 5) * 2)
-	print("FastZoms: " + str(fast_zoms_to_spawn) + " TurretZoms: " + str(turret_zoms_to_spawn))
-	print("CurrentWave: " + str(current_wave) + " Calc: " + str(floor(current_wave / 2)))
+	turret_zoms_to_spawn = ceil((current_wave -  9)/ 5 * 2)
 	#Spawn initial zombie
 	spawn_zombie()
 	
@@ -65,7 +72,24 @@ func stop_wave():
 	
 func spawn_zombie():
 	if in_wave:
-		if big_zoms_to_spawn > 0:
+		if skinny_zoms_to_spawn > 0:
+			#Get spawnpoint 
+			var spawnpoint = spawnpoints.pick_random().global_position
+			var new_enemy = big_zombie.instantiate()
+			
+			#Add more health to enemy depending on wave
+			new_enemy.set_vars((current_wave - 1 ) * 25)
+			
+			#Spawn enemy at spawn point
+			new_enemy.global_position = spawnpoint
+			enemy_container.add_child(new_enemy)
+			
+			#Change vars
+			skinny_zoms_to_spawn -= 1
+			skinny_zoms_spawned += 1
+			print("Spawned zombie at " + str(spawnpoint))
+			print(str(big_zoms_to_spawn) + " zombies left in wave")
+		elif big_zoms_to_spawn > 0:
 			#Get spawnpoint 
 			var spawnpoint = spawnpoints.pick_random().global_position
 			var new_enemy = big_zombie.instantiate()

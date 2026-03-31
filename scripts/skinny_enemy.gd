@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 #Vars
 #Movement vars
-@export var min_speed := 15
+@export var min_speed := 30
 @export var max_speed := 45
 var speed = 30
 const JUMP_VELOCITY = -400.0
@@ -15,7 +15,7 @@ var is_alive = true
 
 #Attack Vars
 var is_attacking := false
-@export var min_attack_distance := 40
+@export var min_attack_distance := 15
 @export var damage_amount := 25
 var distance_to_player := 0.0
 

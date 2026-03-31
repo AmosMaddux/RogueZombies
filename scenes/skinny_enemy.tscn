@@ -136,6 +136,7 @@ script = ExtResource("1_xh6oc")
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1639234480]
+y_sort_enabled = true
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_md0e3")
 animation = &"walk_down"

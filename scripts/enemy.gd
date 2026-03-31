@@ -4,12 +4,12 @@ extends CharacterBody2D
 #Vars
 #Movement vars
 @export var min_speed := 15
-@export var max_speed := 45
+@export var max_speed := 30
 var speed = 30
 const JUMP_VELOCITY = -400.0
 
 #Health Vars
-@export var health = 100
+@export var health = 150
 var is_stunned := false
 var is_alive = true
 
