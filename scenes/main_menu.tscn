@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bu6j5kvo3kmj8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vue75"]
+font_size = 120
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.46688986, 0.46688986, 0.4668898, 1)
+
+[node name="MainMenu" type="Control" unique_id=309171456]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1365760336]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5180998, 0.40300846, 0.2496773, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=1553760238]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer" unique_id=454340777]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=375322598]
+layout_mode = 2
+text = "Zombie Game"
+label_settings = SubResource("LabelSettings_vue75")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=1409088291]
+layout_mode = 2
+text = "Start"
+icon_alignment = 1
