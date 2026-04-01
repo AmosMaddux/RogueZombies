@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://bu6j5kvo3kmj8"]
 
+[ext_resource type="Script" uid="uid://dksdwn4qujeui" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_vue75"]
 font_size = 120
-font_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0.46688986, 0.46688986, 0.4668898, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
 
 [node name="MainMenu" type="Control" unique_id=309171456]
 layout_mode = 3
@@ -13,17 +23,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l6cm7")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1365760336]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.5180998, 0.40300846, 0.2496773, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=1553760238]
+[node name="Panel" type="Panel" parent="." unique_id=2143935202]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,18 +33,69 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer" unique_id=454340777]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=375322598]
-layout_mode = 2
+[node name="Label" type="Label" parent="Panel" unique_id=513101637]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 287.0
+grow_horizontal = 2
 text = "Zombie Game"
 label_settings = SubResource("LabelSettings_vue75")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=1409088291]
+[node name="Label" type="Label" parent="Panel/Label" unique_id=614720855]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "How long can you survive?"
+label_settings = SubResource("LabelSettings_l6cm7")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=500395126]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -292.0
+offset_right = 166.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="StartButton" type="Button" parent="Panel/VBoxContainer" unique_id=317131323]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 text = "Start"
-icon_alignment = 1
+
+[node name="ControlsButton" type="Button" parent="Panel/VBoxContainer" unique_id=1734840019]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+text = "Controls"
+
+[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer" unique_id=1712515531]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+text = "Options"
