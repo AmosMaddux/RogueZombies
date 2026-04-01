@@ -92,6 +92,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 text = "Controls"
 
 [node name="OptionsButton" type="Button" parent="BG/VBoxContainer" unique_id=1712515531]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 35
