@@ -30,6 +30,9 @@ unique_name_in_owner = true
 position = Vector2(417, 330)
 money = 1000
 
+[node name="Enemies" type="Node2D" parent="NavigationRegion2D" unique_id=1234895025]
+y_sort_enabled = true
+
 [node name="Terrain" parent="NavigationRegion2D" unique_id=1159906809 instance=ExtResource("1_0wfyh")]
 
 [node name="Gate" parent="NavigationRegion2D" unique_id=211598144 instance=ExtResource("6_tipki")]
@@ -69,15 +72,12 @@ is_shotgun = true
 
 [node name="SpawnController" parent="." unique_id=1339563444 node_paths=PackedStringArray("spawnpoints_node", "enemy_container") instance=ExtResource("6_o6xl0")]
 spawnpoints_node = NodePath("SpawnPoints")
-enemy_container = NodePath("../Enemies")
+enemy_container = NodePath("../NavigationRegion2D/Enemies")
 
 [node name="SpawnPoints" type="Node2D" parent="SpawnController" unique_id=549648221]
 
 [node name="Marker2D3" type="Marker2D" parent="SpawnController/SpawnPoints" unique_id=1451996995]
 position = Vector2(228, 455)
-
-[node name="Enemies" type="Node2D" parent="." unique_id=1234895025]
-y_sort_enabled = true
 
 [node name="Store" parent="." unique_id=723617124 instance=ExtResource("7_o6xl0")]
 position = Vector2(717, 710)
