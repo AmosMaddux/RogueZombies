@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cofak1boi3q06" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0382_Capa-383.png" id="8_l71n6"]
 [ext_resource type="Texture2D" uid="uid://bpbso3flny5mo" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0383_Capa-384.png" id="9_ke2ow"]
 [ext_resource type="Texture2D" uid="uid://460odbuslcm1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Player Character Walking Animation Frames/Zombie-Tileset---_0478_Capa-479.png" id="9_qfm1y"]
+[ext_resource type="Script" uid="uid://6jxj67601grj" path="res://scripts/dialogue_text.gd" id="22_a38lo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fulsm"]
 animations = [{
@@ -152,6 +153,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4ail"]
 radius = 7.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_i4ail"]
+font_size = 12
+
 [node name="Player" type="CharacterBody2D" unique_id=768004286 groups=["player"]]
 y_sort_enabled = true
 scale = Vector2(0.8, 0.8)
@@ -182,3 +186,21 @@ position = Vector2(0, -8)
 
 [node name="WeaponSlot" type="Marker2D" parent="WeaponPivot" unique_id=1728018417]
 position = Vector2(13, 0)
+
+[node name="DialogueText" type="Label" parent="." unique_id=444654526]
+visible = false
+offset_left = -48.75
+offset_top = -71.24999
+offset_right = 48.749992
+offset_bottom = -26.250008
+text = "Woah!"
+label_settings = SubResource("LabelSettings_i4ail")
+horizontal_alignment = 1
+vertical_alignment = 2
+script = ExtResource("22_a38lo")
+
+[node name="Timer" type="Timer" parent="DialogueText" unique_id=1638539334]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="DialogueText/Timer" to="DialogueText" method="_on_timer_timeout"]

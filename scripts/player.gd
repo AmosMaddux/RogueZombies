@@ -7,6 +7,7 @@ class_name Player
 @onready var animated_sprite: AnimatedSprite2D = $Visuals/AnimatedSprite2D
 @onready var weapon_pivot: Node2D = $WeaponPivot
 @onready var weapon_slot: Marker2D = $WeaponPivot/WeaponSlot
+@onready var dialogue_text: Label = $DialogueText
 
 #Health Vars
 var health := 100
@@ -66,6 +67,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if is_alive:
 		move()
+		
+
+		
 		
 func change_money(item, price: int) -> bool:
 	if item == "money":

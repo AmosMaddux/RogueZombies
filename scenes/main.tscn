@@ -19,7 +19,6 @@ agent_radius = 7.0
 [node name="Main" type="Node2D" unique_id=112989706]
 
 [node name="HUD" parent="." unique_id=1773076948 instance=ExtResource("6_tefeu")]
-visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=624919548 groups=["nav"]]
 y_sort_enabled = true

@@ -11,7 +11,7 @@ func _on_start_button_pressed() -> void:
 	_transition_to_scene("res://scenes/main.tscn")
 
 func _on_controls_button_pressed() -> void:
-	_transition_to_scene("res://scenes/Controls.tscn")
+	_transition_to_scene("res://scenes/controls_tut.tscn")
 
 func _on_options_button_pressed() -> void:
 	_transition_to_scene("res://scenes/Options.tscn")

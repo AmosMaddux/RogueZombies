@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RogueZombies"
-run/main_scene="uid://djf8qq0s0xvm7"
+run/main_scene="uid://bu6j5kvo3kmj8"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
