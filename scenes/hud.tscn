@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://m1uii5wbwtp"]
 
 [ext_resource type="Script" uid="uid://y0kg44o8r5av" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://cc6l1ck3ximc7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0337_Capa-338.png" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://bj4hsbf1x7qid" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0334_Capa-335.png" id="3_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://cq18m13q8uqr1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0331_Capa-332.png" id="4_uo2fv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
 font_size = 32
 
 [node name="HUD" type="CanvasLayer" unique_id=1773076948]
 script = ExtResource("1_ahhtf")
+knife_icon = ExtResource("2_oo0fn")
+pistol_icon = ExtResource("3_6fi6k")
+shotgun_icon = ExtResource("4_uo2fv")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1044027092]
 anchors_preset = 15
@@ -135,9 +141,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -258.0
-offset_top = -45.0
-offset_right = -67.0
-offset_bottom = 17.0
+offset_left = -218.0
+offset_top = -47.0
+offset_right = -105.0
+offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
