@@ -78,6 +78,7 @@ func change_money(item, price: int) -> bool:
 		return true
 	else:
 		if money >= price:
+			money -= price
 			if item == "gate":
 				GameEvents.gate_purchased.emit()
 				print("Purchased gate")
@@ -91,12 +92,13 @@ func change_money(item, price: int) -> bool:
 			elif item == "shotgun_ammo":
 				shotgun_ammo_reserves += 16
 				print("Bought shotgun ammo!")
+				
+			GameEvents.money_changed.emit(money)
 			return true
 		else:
 			return false
 		
-	print("New Money amount: " + str(money))
-	GameEvents.money_changed.emit(money)
+
 		
 		
 func take_damage(damage_amount: int):

@@ -2,9 +2,12 @@ extends CanvasLayer
 
 @onready var health_num: Label = $MarginContainer/Control/ColorRect/HealthNum
 @onready var ammo_num: Label = $MarginContainer/Control/ColorRect/AmmoNum
-@onready var weapon_name_text: Label = $MarginContainer/Control/ColorRect/WeaponNameText
 @onready var money_num: Label = $MarginContainer/Control/ColorRect/MoneyNum
 @onready var ammo_reserve_num: Label = $MarginContainer/Control/ColorRect/AmmoReserveNum
+@onready var weapon_icon: TextureRect = $MarginContainer/Control/ColorRect/WeaponIcon
+
+@export var knife_icon: Image
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

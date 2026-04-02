@@ -188,6 +188,7 @@ position = Vector2(0, -8)
 position = Vector2(13, 0)
 
 [node name="DialogueText" type="Label" parent="." unique_id=444654526]
+visible = false
 z_index = 10
 offset_left = -48.75
 offset_top = -71.24999
