@@ -12,4 +12,5 @@ signal gate_purchased()
 
 #Wave Events
 signal wave_over()
+signal new_wave_started(wave_num)
 	

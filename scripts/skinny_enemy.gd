@@ -22,12 +22,18 @@ var distance_to_player := 0.0
 #Child Nodes
 @onready var animated_sprite_2d: AnimatedSprite2D = $Visuals/AnimatedSprite2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 #Other Nodes and Scenes
 @onready var player: Player
 @onready var visuals: Node2D = $Visuals
 
 @export var money_scene: PackedScene
+
+#SFX
+@export var hit_grunt: AudioStream
+
 
 func _ready() -> void:
 	speed = randf_range(min_speed, max_speed)
@@ -74,9 +80,15 @@ func die():
 	queue_free()
 	
 func take_damage(damage_amount: int):
+	
+	#Play SFX
+	audio_stream_player.stream = hit_grunt
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.5)
+	audio_stream_player.play()
+	
+	
 	is_stunned = true
 	health -= damage_amount
-	print("Ow! " + self.name + " has taken " + str(damage_amount) + " damage! Current health: " + str(health))
 
 	animate_damage()
 	

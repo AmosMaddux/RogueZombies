@@ -10,12 +10,14 @@ var is_attacking = false
 @onready var hitbox: CollisionShape2D = $hitbox/CollisionShape2D
 @onready var bullet_spawn_point: Marker2D = $BulletSpawnPoint
 @onready var cooldown: Timer = $Timer
+@onready var audio_stream_player_2d: AudioStreamPlayer = $AudioStreamPlayer2D
 
 #Packed Scenes
 @export var bullet_scene: PackedScene
 @export var fire_fx: PackedScene
 
 var player: Player
+
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -27,6 +29,10 @@ func attack(origin: Marker2D):
 		
 		player.pistol_current_ammo -= 1
 		GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)
+		
+		#Play SFX
+		audio_stream_player_2d.pitch_scale = randf_range(0.7, 1.3)
+		audio_stream_player_2d.play()
 		
 		#Instantiate bullet and flash
 		var bullet := bullet_scene.instantiate()

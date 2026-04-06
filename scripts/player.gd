@@ -8,6 +8,7 @@ class_name Player
 @onready var weapon_pivot: Node2D = $WeaponPivot
 @onready var weapon_slot: Marker2D = $WeaponPivot/WeaponSlot
 @onready var dialogue_text: Label = $DialogueText
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 #Health Vars
 var health := 100
@@ -47,6 +48,9 @@ var pistol_ammo_reserves := 32
 var shotgun_max_ammo := 4
 var shotgun_current_ammo := 0
 var shotgun_ammo_reserves := 16
+
+#SFX
+@export var hit_grunt: AudioStream
 
 func _ready() -> void:
 	#Initialize UI
@@ -102,15 +106,9 @@ func change_money(item, price: int) -> bool:
 		
 		
 func take_damage(damage_amount: int):
+	
+	#Subtract Health
 	health -= damage_amount
-	print("Player has taken damage! Health: " + str(health))
-	
-	#Flash red
-	var tween = create_tween()
-	tween.tween_property(animated_sprite, "self_modulate", Color.RED, 0.1)
-	tween.tween_property(animated_sprite, "self_modulate", Color.WHITE, 0.1)
-
-	
 	if health <= 0:
 		GameEvents.player_health_changed.emit(0)
 		is_alive = false
@@ -118,6 +116,18 @@ func take_damage(damage_amount: int):
 	else:
 		GameEvents.player_health_changed.emit(health)
 		
+	
+	#Flash red
+	var tween = create_tween()
+	tween.tween_property(animated_sprite, "self_modulate", Color.RED, 0.1)
+	tween.tween_property(animated_sprite, "self_modulate", Color.WHITE, 0.1)
+
+	#Play SFX
+	audio_stream_player.stream = hit_grunt
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.1)
+	audio_stream_player.play()
+	
+
 func die():
 	Engine.time_scale = 0.5
 	animated_sprite.play("die")

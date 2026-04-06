@@ -8,6 +8,7 @@ var is_attacking = false
 
 #Child Nodes
 @onready var hitbox: CollisionShape2D = $hitbox/CollisionShape2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 #Packed Scenes
@@ -20,11 +21,14 @@ func attack(origin: Marker2D):
 			targets_hit.clear()
 			#Enable hitbox of knife
 			hitbox.set_deferred("disabled", false)
+			#Randomaize pitch of knife swing sfx
+			audio_stream_player.pitch_scale = randf_range(0.7, 1.3)
 			#Tween the knife so it looks like a slash
 			var tween = create_tween()
 			#Wind up
 			tween.tween_property(self, "rotation", deg_to_rad(-45), 0.05)
 			tween.parallel().tween_property(self, "position:y", -10.0, 0.05)
+			tween.tween_callback(func(): audio_stream_player.play())
 			#Slash
 			tween.tween_property(self, "rotation", deg_to_rad(45), 0.1).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 			tween.parallel().tween_property(self, "position:y", 5.0, 0.1)

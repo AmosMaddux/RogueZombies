@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://j02qymyeokri" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Player Character Walking Animation Frames/Zombie-Tileset---_0479_Capa-480.png" id="4_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://co5colcexfyfb" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Player Animation Frames/Zombie-Tileset---_0487_Capa-488.png" id="4_60mlk"]
 [ext_resource type="PackedScene" uid="uid://dg8ujyj2k82h0" path="res://scenes/knife.tscn" id="4_a38lo"]
+[ext_resource type="AudioStream" uid="uid://u6usi5jkm4ve" path="res://sfx/player_hit.mp3" id="5_4ni07"]
 [ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="5_i4ail"]
 [ext_resource type="Texture2D" uid="uid://d20rk2noveh2q" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Player Character Walking Animation Frames/Zombie-Tileset---_0480_Capa-481.png" id="5_jej6c"]
 [ext_resource type="Texture2D" uid="uid://bvmaucelt0k2t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0380_Capa-381.png" id="6_a38lo"]
@@ -165,6 +166,7 @@ script = ExtResource("1_y4r1p")
 shotgun_scene = ExtResource("2_4r5pv")
 pistol_scene = ExtResource("3_i4ail")
 knife_scene = ExtResource("4_a38lo")
+hit_grunt = ExtResource("5_4ni07")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1407934232]
 
@@ -203,5 +205,7 @@ script = ExtResource("22_a38lo")
 [node name="Timer" type="Timer" parent="DialogueText" unique_id=1638539334]
 wait_time = 5.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=466072901]
 
 [connection signal="timeout" from="DialogueText/Timer" to="DialogueText" method="_on_timer_timeout"]

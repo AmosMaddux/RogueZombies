@@ -10,6 +10,7 @@ var is_attacking = false
 @onready var hitbox: CollisionShape2D = $hitbox/CollisionShape2D
 @onready var bullet_spawn_point: Marker2D = $BulletSpawnPoint
 @onready var cooldown: Timer = $Timer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 #Packed Scenes
 @export var bullet_scene: PackedScene
@@ -23,10 +24,14 @@ func _ready() -> void:
 func attack(origin: Marker2D):
 	if cooldown.is_stopped() and player.shotgun_current_ammo > 0:
 		
+		#Change Ammo
 		player.shotgun_current_ammo -= 1
 		GameEvents.player_ammo_changed.emit(player.shotgun_current_ammo, player.shotgun_ammo_reserves)
 		
-		print("You have " + str(player.shotgun_current_ammo) + " ammo")
+		#Randomize pitch of shot sfx and play
+		audio_stream_player.pitch_scale = randf_range(0.7, 1.3)
+		audio_stream_player.play()
+		
 		#Instantiate 4 bullets and flash
 		var spawned_bullets = []
 		for i in range(4):

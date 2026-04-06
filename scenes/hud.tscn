@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://cc6l1ck3ximc7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0337_Capa-338.png" id="2_oo0fn"]
 [ext_resource type="Texture2D" uid="uid://bj4hsbf1x7qid" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0334_Capa-335.png" id="3_6fi6k"]
 [ext_resource type="Texture2D" uid="uid://cq18m13q8uqr1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0331_Capa-332.png" id="4_uo2fv"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
-font_size = 32
+[ext_resource type="Texture2D" uid="uid://dq4pe3oy75ddg" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0327_Capa-328.png" id="5_5pdws"]
+[ext_resource type="LabelSettings" uid="uid://cf1moac4ukod8" path="res://basic_font.tres" id="5_047uy"]
+[ext_resource type="LabelSettings" uid="uid://ec184h1yss1i" path="res://big_font.tres" id="6_5pdws"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1773076948]
 script = ExtResource("1_ahhtf")
 knife_icon = ExtResource("2_oo0fn")
 pistol_icon = ExtResource("3_6fi6k")
 shotgun_icon = ExtResource("4_uo2fv")
+gas_icon = ExtResource("5_5pdws")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1044027092]
 anchors_preset = 15
@@ -30,7 +31,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
+offset_top = -126.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)
@@ -48,7 +49,7 @@ offset_right = -163.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Ammo"
-label_settings = SubResource("LabelSettings_toqtt")
+label_settings = ExtResource("5_047uy")
 
 [node name="AmmoNum" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=195365579]
 layout_mode = 1
@@ -63,7 +64,7 @@ offset_right = -79.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "0"
-label_settings = SubResource("LabelSettings_toqtt")
+label_settings = ExtResource("5_047uy")
 
 [node name="AmmoReserveNum" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=172782819]
 layout_mode = 1
@@ -78,7 +79,7 @@ offset_right = -35.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "/0"
-label_settings = SubResource("LabelSettings_toqtt")
+label_settings = ExtResource("5_047uy")
 
 [node name="HealthText" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=1664805580]
 layout_mode = 1
@@ -90,7 +91,7 @@ offset_top = -45.0
 offset_right = 116.0
 grow_vertical = 0
 text = "Health"
-label_settings = SubResource("LabelSettings_toqtt")
+label_settings = ExtResource("5_047uy")
 
 [node name="HealthNum" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=1476605264]
 layout_mode = 1
@@ -102,7 +103,7 @@ offset_top = -45.0
 offset_right = 197.0
 grow_vertical = 0
 text = "0"
-label_settings = SubResource("LabelSettings_toqtt")
+label_settings = ExtResource("5_047uy")
 
 [node name="MoneyText" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=1354395673]
 layout_mode = 1
@@ -117,7 +118,7 @@ offset_right = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Money"
-label_settings = SubResource("LabelSettings_toqtt")
+label_settings = ExtResource("5_047uy")
 
 [node name="MoneyNum" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=356574885]
 layout_mode = 1
@@ -127,12 +128,45 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -45.0
+offset_top = -47.0
 offset_right = 90.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "0"
-label_settings = SubResource("LabelSettings_toqtt")
+label_settings = ExtResource("5_047uy")
+
+[node name="WaveText" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=80823732]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -119.0
+offset_right = 13.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Wave"
+label_settings = ExtResource("6_5pdws")
+
+[node name="WaveNum" type="Label" parent="MarginContainer/Control/ColorRect" unique_id=1370670195]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = -121.0
+offset_right = 99.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+label_settings = ExtResource("6_5pdws")
 
 [node name="WeaponIcon" type="TextureRect" parent="MarginContainer/Control/ColorRect" unique_id=888283606]
 layout_mode = 1
@@ -141,9 +175,25 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -47.0
-offset_right = -105.0
+offset_left = -268.0
+offset_top = -53.0
+offset_right = -144.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+stretch_mode = 4
+
+[node name="GasIcon" type="TextureRect" parent="MarginContainer/Control/ColorRect" unique_id=974543616]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -53.0
+offset_right = -18.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+stretch_mode = 4

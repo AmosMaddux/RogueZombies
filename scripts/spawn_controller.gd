@@ -41,6 +41,7 @@ func start_wave():
 	print("Wave starting...")
 	#Reset wave Vars
 	current_wave += 1
+	GameEvents.new_wave_started.emit(current_wave)
 	#Spawn one and a half skinny zombies per wave
 	skinny_zoms_spawned = 0
 	skinny_zoms_to_spawn = ceil(current_wave * 1.5)
@@ -143,7 +144,8 @@ func spawn_zombie():
 			
 			
 func check_if_wave_over():
-	if in_wave and big_zoms_to_spawn <= 0:
+	#If there are no more zoms to be spawned, and we are currently in a wave, check if all the enemies are deadd
+	if in_wave and (big_zoms_to_spawn + skinny_zoms_to_spawn + turret_zoms_to_spawn + fast_zoms_to_spawn) <= 0:
 		var enemies_left = get_tree().get_nodes_in_group("enemy")
 		
 		if enemies_left.size() == 0:

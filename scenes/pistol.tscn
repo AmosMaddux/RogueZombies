@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bj4hsbf1x7qid" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0334_Capa-335.png" id="2_1e3ry"]
 [ext_resource type="PackedScene" uid="uid://dindvgje25rg7" path="res://scenes/bullet.tscn" id="2_t6oaa"]
 [ext_resource type="PackedScene" uid="uid://cox4xbaoj0qu3" path="res://scenes/pistol_fire_fx.tscn" id="3_t6oaa"]
+[ext_resource type="AudioStream" uid="uid://dx75vxyjcd7nx" path="res://sfx/pistol_shot.wav" id="5_4hq71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6oaa"]
 size = Vector2(8, 6)
@@ -26,5 +27,9 @@ position = Vector2(4, -1)
 [node name="Timer" type="Timer" parent="." unique_id=651670837]
 wait_time = 0.1
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=1139266614]
+stream = ExtResource("5_4hq71")
+volume_db = -15.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
