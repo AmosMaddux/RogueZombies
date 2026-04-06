@@ -12,6 +12,7 @@ size = Vector2(12, 4)
 size = Vector2(7, 4)
 
 [node name="knife" type="Area2D" unique_id=1909007110]
+y_sort_enabled = true
 script = ExtResource("1_syuqf")
 fx_scene = ExtResource("2_amocf")
 

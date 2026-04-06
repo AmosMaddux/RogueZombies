@@ -169,6 +169,7 @@ knife_scene = ExtResource("4_a38lo")
 hit_grunt = ExtResource("5_4ni07")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1407934232]
+y_sort_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=1614711291]
 position = Vector2(0, -8)
@@ -184,9 +185,11 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="WeaponPivot" type="Node2D" parent="." unique_id=1337569682]
+y_sort_enabled = true
 position = Vector2(0, -8)
 
 [node name="WeaponSlot" type="Marker2D" parent="WeaponPivot" unique_id=1728018417]
+y_sort_enabled = true
 position = Vector2(13, 0)
 
 [node name="DialogueText" type="Label" parent="." unique_id=444654526]

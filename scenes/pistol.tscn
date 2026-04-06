@@ -10,6 +10,7 @@
 size = Vector2(8, 6)
 
 [node name="Pistol" type="Area2D" unique_id=143596898]
+y_sort_enabled = true
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_buff3")
 bullet_scene = ExtResource("2_t6oaa")
