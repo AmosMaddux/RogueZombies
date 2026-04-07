@@ -38,7 +38,7 @@ func attack(origin: Marker2D):
 		audio_stream_player.pitch_scale = randf_range(0.7, 1.3)
 		audio_stream_player.play()
 		
-		#Instantiate 4 bullets and flash
+		#Instantiate 8 bullets and flash
 		var spawned_bullets = []
 		for i in range(8):
 			var bullet := bullet_scene.instantiate()
@@ -75,7 +75,7 @@ func set_up():
 
 
 func _on_reload_timer_timeout() -> void:
-	while player.shotgun_ammo_reserves > 0 and player.shotgun_current_ammo < 4:
+	while player.shotgun_ammo_reserves > 0 and player.shotgun_current_ammo < 6:
 		player.shotgun_current_ammo += 1
 		player.shotgun_ammo_reserves -= 1
 	GameEvents.player_ammo_changed.emit(player.shotgun_current_ammo, player.shotgun_ammo_reserves)

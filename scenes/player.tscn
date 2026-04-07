@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d20rk2noveh2q" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Player Character Walking Animation Frames/Zombie-Tileset---_0480_Capa-481.png" id="5_jej6c"]
 [ext_resource type="Texture2D" uid="uid://bvmaucelt0k2t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0380_Capa-381.png" id="6_a38lo"]
 [ext_resource type="Texture2D" uid="uid://csj11t13q4ln7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Player Character Walking Animation Frames/Zombie-Tileset---_0481_Capa-482.png" id="6_f1ej7"]
+[ext_resource type="AudioStream" uid="uid://37no4f6we8w7" path="res://sfx/generic_pick_up.mp3" id="6_l71n6"]
 [ext_resource type="Texture2D" uid="uid://b0jy4vtldvpj6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0381_Capa-382.png" id="7_4ni07"]
 [ext_resource type="Texture2D" uid="uid://cqvyvnufj2i0p" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Player Character Walking Animation Frames/Zombie-Tileset---_0476_Capa-477.png" id="7_oprun"]
 [ext_resource type="Texture2D" uid="uid://deklks8afowuu" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Player Character Walking Animation Frames/Zombie-Tileset---_0477_Capa-478.png" id="8_a8ls1"]
@@ -167,6 +168,7 @@ shotgun_scene = ExtResource("2_4r5pv")
 pistol_scene = ExtResource("3_i4ail")
 knife_scene = ExtResource("4_a38lo")
 hit_grunt = ExtResource("5_4ni07")
+pick_up = ExtResource("6_l71n6")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1407934232]
 y_sort_enabled = true
