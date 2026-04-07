@@ -4,8 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dlpbqodyye8pc" path="res://scenes/money.tscn" id="2_ju73p"]
 [ext_resource type="Texture2D" uid="uid://u2sjw1txej5t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Kid Zombie Animation Frames/Zombie-Tileset---_0446_Capa-447.png" id="2_qnp8r"]
 [ext_resource type="Texture2D" uid="uid://b03jarbef4x6s" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Kid Zombie Animation Frames/Zombie-Tileset---_0447_Capa-448.png" id="3_ju73p"]
+[ext_resource type="AudioStream" uid="uid://b4ga4f7syvqr7" path="res://sfx/zombie_hit.wav" id="3_qepna"]
 [ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="4_8k455"]
+[ext_resource type="AudioStream" uid="uid://jbkn61uk8ijt" path="res://sfx/zombie_1.wav" id="4_ib3bm"]
 [ext_resource type="Texture2D" uid="uid://bvmaucelt0k2t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0380_Capa-381.png" id="5_kswd5"]
+[ext_resource type="AudioStream" uid="uid://bpc0gs4n8kfdg" path="res://sfx/zombie_2.wav" id="5_ttkng"]
+[ext_resource type="AudioStream" uid="uid://c5pxqikr4hx1u" path="res://sfx/zombie_3.wav" id="6_7gmlb"]
 [ext_resource type="Texture2D" uid="uid://b0jy4vtldvpj6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0381_Capa-382.png" id="6_thswr"]
 [ext_resource type="Texture2D" uid="uid://cofak1boi3q06" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0382_Capa-383.png" id="7_j4ice"]
 [ext_resource type="Texture2D" uid="uid://bpbso3flny5mo" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0383_Capa-384.png" id="8_s2mim"]
@@ -137,6 +141,8 @@ max_speed = 90
 health = 50
 min_attack_distance = 10
 money_scene = ExtResource("2_ju73p")
+hit_grunt = ExtResource("3_qepna")
+attack_grunts = Array[AudioStream]([ExtResource("4_ib3bm"), ExtResource("5_ttkng"), ExtResource("6_7gmlb")])
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
 
@@ -153,3 +159,5 @@ shape = SubResource("CircleShape2D_ju73p")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=402544949]
 path_desired_distance = 2.0
 target_desired_distance = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=215217432]

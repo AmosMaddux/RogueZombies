@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed := 300
-@export var damage_amount := 25
+@export var damage_amount := 75
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

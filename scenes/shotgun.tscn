@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cq18m13q8uqr1" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0331_Capa-332.png" id="1_voyse"]
 [ext_resource type="PackedScene" uid="uid://dindvgje25rg7" path="res://scenes/bullet.tscn" id="2_1ya1i"]
 [ext_resource type="PackedScene" uid="uid://ccdnchj4tnrmy" path="res://scenes/shotgun_fire_fx.tscn" id="3_w47vr"]
+[ext_resource type="AudioStream" uid="uid://gnw2nka8fdaw" path="res://sfx/shotgun_reload_ext.mp3" id="5_lmvec"]
 [ext_resource type="AudioStream" uid="uid://drrq68q80ac8t" path="res://sfx/shotgun_shot.wav" id="5_ma6dp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnj2g"]
@@ -14,6 +15,8 @@ y_sort_enabled = true
 script = ExtResource("1_gnj2g")
 bullet_scene = ExtResource("2_1ya1i")
 fire_fx = ExtResource("3_w47vr")
+shotgun_shot_sfx = ExtResource("5_ma6dp")
+shotgun_reload_sfx = ExtResource("5_lmvec")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=618346551]
 texture = ExtResource("1_voyse")
@@ -31,4 +34,9 @@ one_shot = true
 stream = ExtResource("5_ma6dp")
 volume_db = -15.0
 
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1100862443]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

@@ -22,6 +22,7 @@ var distance_to_player := 0.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $Visuals/AnimatedSprite2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var vomit_origin: Marker2D = $Visuals/VomitOrigin
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 #Other Nodes
 @onready var player: Player
@@ -30,6 +31,10 @@ var distance_to_player := 0.0
 
 #PackedScenes
 @export var vomit_projectile: PackedScene 
+
+#SFX
+@export var hit_grunt: AudioStream
+@export var attack_grunt: AudioStream
 
 func _ready() -> void:
 	speed = randf_range(min_speed, max_speed)
@@ -67,6 +72,10 @@ func animate_walk(direction: Vector2):
 func die():
 	is_alive = false
 	animated_sprite_2d.play("die")
+	#Play SFX
+	audio_stream_player.stream = hit_grunt
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.5)
+	audio_stream_player.play()
 	await animated_sprite_2d.animation_finished
 	
 	#Instantiate Money object at location
@@ -95,8 +104,11 @@ func move():
 	move_and_slide()
 	
 func start_attack():
-	print("Distance to player: " + str(distance_to_player))
-	print("Min Attack Distance: " + str(min_attack_distance))
+	#Play SFX
+	audio_stream_player.stream = attack_grunt
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.5)
+	audio_stream_player.play()
+	
 	is_attacking = true
 	var x_direction = -1 if velocity.x > 0 else 1
 	velocity = Vector2.ZERO

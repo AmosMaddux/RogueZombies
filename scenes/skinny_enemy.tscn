@@ -4,9 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dlpbqodyye8pc" path="res://scenes/money.tscn" id="2_v86dr"]
 [ext_resource type="AudioStream" uid="uid://b4ga4f7syvqr7" path="res://sfx/zombie_hit.wav" id="3_mfr1p"]
 [ext_resource type="Texture2D" uid="uid://cw8nnewnorr6s" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Skinny Zombie Animation Frames/Zombie-Tileset---_0404_Capa-405.png" id="3_v86dr"]
+[ext_resource type="AudioStream" uid="uid://jbkn61uk8ijt" path="res://sfx/zombie_1.wav" id="4_b3iat"]
 [ext_resource type="Texture2D" uid="uid://buacr4p5igag7" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Skinny Zombie Animation Frames/Zombie-Tileset---_0405_Capa-406.png" id="4_mfr1p"]
+[ext_resource type="AudioStream" uid="uid://bpc0gs4n8kfdg" path="res://sfx/zombie_2.wav" id="5_2d1be"]
 [ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="5_rcwx6"]
 [ext_resource type="Texture2D" uid="uid://bvmaucelt0k2t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0380_Capa-381.png" id="6_b3iat"]
+[ext_resource type="AudioStream" uid="uid://c5pxqikr4hx1u" path="res://sfx/zombie_3.wav" id="6_o8fvb"]
 [ext_resource type="Texture2D" uid="uid://b0jy4vtldvpj6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0381_Capa-382.png" id="7_2d1be"]
 [ext_resource type="Texture2D" uid="uid://cofak1boi3q06" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0382_Capa-383.png" id="8_o8fvb"]
 [ext_resource type="Texture2D" uid="uid://bpbso3flny5mo" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0383_Capa-384.png" id="9_jn4w5"]
@@ -136,6 +139,7 @@ collision_layer = 2
 script = ExtResource("1_xh6oc")
 money_scene = ExtResource("2_v86dr")
 hit_grunt = ExtResource("3_mfr1p")
+attack_grunts = Array[AudioStream]([ExtResource("4_b3iat"), ExtResource("5_2d1be"), ExtResource("6_o8fvb")])
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
 
@@ -154,3 +158,4 @@ path_desired_distance = 2.0
 target_desired_distance = 2.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1637615504]
+volume_db = -15.0

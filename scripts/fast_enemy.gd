@@ -22,11 +22,16 @@ var distance_to_player := 0.0
 #Child Nodes
 @onready var animated_sprite_2d: AnimatedSprite2D = $Visuals/AnimatedSprite2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 #Other Nodes
 @onready var player: Player
 @onready var visuals: Node2D = $Visuals
 @export var money_scene: PackedScene
+
+#SFX
+@export var hit_grunt: AudioStream
+@export var attack_grunts: Array[AudioStream]
 
 func _ready() -> void:
 	speed = randf_range(min_speed, max_speed)
@@ -64,6 +69,10 @@ func animate_walk(direction: Vector2):
 func die():
 	is_alive = false
 	animated_sprite_2d.play("die")
+	#Play SFX
+	audio_stream_player.stream = hit_grunt
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.5)
+	audio_stream_player.play()
 	await animated_sprite_2d.animation_finished
 	
 	#Instantiate Money object at location
@@ -92,6 +101,11 @@ func move():
 	move_and_slide()
 	
 func start_attack():
+	#Play SFX
+	audio_stream_player.stream = attack_grunts.pick_random()
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.5)
+	audio_stream_player.play()
+	
 	is_attacking = true
 	var x_direction = -1 if velocity.x > 0 else 1
 	print("x_dirction is " + str(x_direction))

@@ -11,12 +11,17 @@ var is_attacking = false
 @onready var bullet_spawn_point: Marker2D = $BulletSpawnPoint
 @onready var cooldown: Timer = $Timer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var reload_timer: Timer = $ReloadTimer
 
 #Packed Scenes
 @export var bullet_scene: PackedScene
 @export var fire_fx: PackedScene
 
 var player: Player
+
+#SFX
+@export var shotgun_shot_sfx: AudioStream
+@export var shotgun_reload_sfx: AudioStream
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -29,12 +34,13 @@ func attack(origin: Marker2D):
 		GameEvents.player_ammo_changed.emit(player.shotgun_current_ammo, player.shotgun_ammo_reserves)
 		
 		#Randomize pitch of shot sfx and play
+		audio_stream_player.stream = shotgun_shot_sfx
 		audio_stream_player.pitch_scale = randf_range(0.7, 1.3)
 		audio_stream_player.play()
 		
 		#Instantiate 4 bullets and flash
 		var spawned_bullets = []
-		for i in range(4):
+		for i in range(8):
 			var bullet := bullet_scene.instantiate()
 			spawned_bullets.append(bullet)
 			
@@ -56,13 +62,21 @@ func attack(origin: Marker2D):
 		
 func reload():
 	
-	while player.shotgun_ammo_reserves > 0 and player.shotgun_current_ammo < 4:
-		player.shotgun_current_ammo += 1
-		player.shotgun_ammo_reserves -= 1
-	GameEvents.player_ammo_changed.emit(player.shotgun_current_ammo, player.shotgun_ammo_reserves)
+	audio_stream_player.stream = shotgun_reload_sfx
+	audio_stream_player.play()
+	
+	reload_timer.start()
 		
 
 		
 func set_up():		
 	#Initialize UI
 	GameEvents.player_ammo_changed.emit(player.shotgun_current_ammo, player.shotgun_ammo_reserves)
+
+
+func _on_reload_timer_timeout() -> void:
+	while player.shotgun_ammo_reserves > 0 and player.shotgun_current_ammo < 4:
+		player.shotgun_current_ammo += 1
+		player.shotgun_ammo_reserves -= 1
+	GameEvents.player_ammo_changed.emit(player.shotgun_current_ammo, player.shotgun_ammo_reserves)
+	

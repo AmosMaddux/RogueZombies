@@ -3,7 +3,7 @@ class_name Knife
 
 #Vars
 var targets_hit = []
-@export var damage_amount := 50
+@export var damage_amount := 100
 var is_attacking = false
 
 #Child Nodes

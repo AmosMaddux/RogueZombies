@@ -11,12 +11,17 @@ var is_attacking = false
 @onready var bullet_spawn_point: Marker2D = $BulletSpawnPoint
 @onready var cooldown: Timer = $Timer
 @onready var audio_stream_player_2d: AudioStreamPlayer = $AudioStreamPlayer2D
+@onready var reload_timer: Timer = $ReloadTimer
 
 #Packed Scenes
 @export var bullet_scene: PackedScene
 @export var fire_fx: PackedScene
 
 var player: Player
+
+#SFX
+@export var pistol_shot_sfx: AudioStream
+@export var pistol_reload_sfx: AudioStream
 
 
 func _ready() -> void:
@@ -31,6 +36,7 @@ func attack(origin: Marker2D):
 		GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)
 		
 		#Play SFX
+		audio_stream_player_2d.stream = pistol_shot_sfx
 		audio_stream_player_2d.pitch_scale = randf_range(0.7, 1.3)
 		audio_stream_player_2d.play()
 		
@@ -52,13 +58,20 @@ func attack(origin: Marker2D):
 		
 func reload():
 	
-	while player.pistol_ammo_reserves > 0 and player.pistol_current_ammo < 8:
-		player.pistol_ammo_reserves -= 1
-		player.pistol_current_ammo += 1
-		
-	GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)
+	audio_stream_player_2d.stream = pistol_reload_sfx
+	audio_stream_player_2d.play()
+	reload_timer.start()
 
 		
 func set_up():
 	#Initialize UI
+	GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)
+
+
+func _on_reload_timer_timeout() -> void:
+	
+	while player.pistol_ammo_reserves > 0 and player.pistol_current_ammo < 8:
+		player.pistol_ammo_reserves -= 1
+		player.pistol_current_ammo += 1
+		
 	GameEvents.player_ammo_changed.emit(player.pistol_current_ammo, player.pistol_ammo_reserves)

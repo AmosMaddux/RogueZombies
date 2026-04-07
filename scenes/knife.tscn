@@ -25,9 +25,11 @@ texture = ExtResource("1_ufhdc")
 shape = SubResource("RectangleShape2D_syuqf")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1017399593]
+y_sort_enabled = true
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1911077926]
+y_sort_enabled = true
 position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_amocf")
 disabled = true

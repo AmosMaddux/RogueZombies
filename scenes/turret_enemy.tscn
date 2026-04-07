@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bs3fxiq0ssjx4" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Turret Zombie Animation Frames/Zombie-Tileset---_0461_Capa-462.png" id="2_okdyq"]
 [ext_resource type="Texture2D" uid="uid://lh7l6du7pebu" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Damaged Turret Zombie Animation Frames/Zombie-Tileset---_0462_Capa-463.png" id="3_ogben"]
 [ext_resource type="Texture2D" uid="uid://drmmthjysasn0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0379_Capa-380.png" id="4_okdyq"]
+[ext_resource type="AudioStream" uid="uid://b4ga4f7syvqr7" path="res://sfx/zombie_hit.wav" id="4_wl731"]
 [ext_resource type="Texture2D" uid="uid://bvmaucelt0k2t" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0380_Capa-381.png" id="5_ogben"]
+[ext_resource type="AudioStream" uid="uid://d0hwbt233nimu" path="res://sfx/zombie_spit.wav" id="5_ubkp3"]
 [ext_resource type="Texture2D" uid="uid://b0jy4vtldvpj6" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0381_Capa-382.png" id="6_8lb8d"]
 [ext_resource type="Texture2D" uid="uid://cofak1boi3q06" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0382_Capa-383.png" id="7_wl731"]
 [ext_resource type="Texture2D" uid="uid://bpbso3flny5mo" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Blood Animation Frames/Zombie-Tileset---_0383_Capa-384.png" id="8_ubkp3"]
@@ -138,6 +140,8 @@ collision_layer = 2
 script = ExtResource("1_3sh46")
 money_scene = ExtResource("2_8lb8d")
 vomit_projectile = ExtResource("2_ogben")
+hit_grunt = ExtResource("4_wl731")
+attack_grunt = ExtResource("5_ubkp3")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1730551592]
 
@@ -157,3 +161,6 @@ shape = SubResource("CircleShape2D_8lb8d")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=402544949]
 path_desired_distance = 2.0
 target_desired_distance = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=773342863]
+volume_db = -15.0
